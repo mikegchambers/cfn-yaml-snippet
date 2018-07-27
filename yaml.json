@@ -44,10 +44,25 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticBeanstalk::ConfigurationTemplate\"\r\n\tProperties:\r\n\t\tApplicationName: String #required\r\n\t\tDescription: String\r\n\t\tEnvironmentId: String\r\n\t\tOptionSettings:\r\n\t\t\t- ConfigurationOptionSetting\r\n\t\tPlatformArn: String\r\n\t\tSolutionStackName: String\r\n\t\tSourceConfiguration:\r\n\t\t\tSourceConfiguration\r\n",
         "description": "AWS::ElasticBeanstalk::ConfigurationTemplate\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticbeanstalk-configurationtemplate.html"
     },
+    "AWS::AmazonMQ::Broker": {
+        "prefix": "amazonmq-broker",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AmazonMQ::Broker\"\r\n\tProperties:\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tEngineVersion: String #required\r\n\t\tConfiguration:\r\n\t\t\tConfigurationId\r\n\t\tMaintenanceWindowStartTime:\r\n\t\t\tMaintenanceWindow\r\n\t\tDeploymentMode: String #required\r\n\t\tHostInstanceType: String #required\r\n\t\tEngineType: String #required\r\n\t\tAutoMinorVersionUpgrade: Boolean #required\r\n\t\tUsers: #required\r\n\t\t\t- User\r\n\t\tPubliclyAccessible: Boolean #required\r\n\t\tSubnetIds:\r\n\t\t\t- String\r\n\t\tBrokerName: String #required\r\n",
+        "description": "AWS::AmazonMQ::Broker\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html"
+    },
     "AWS::EC2::RouteTable": {
         "prefix": "ec2-routetable",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::RouteTable\"\r\n\tProperties:\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcId: String #required\r\n",
         "description": "AWS::EC2::RouteTable\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html"
+    },
+    "AWS::AppSync::DataSource": {
+        "prefix": "appsync-datasource",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AppSync::DataSource\"\r\n\tProperties:\r\n\t\tType: String #required\r\n\t\tDescription: String\r\n\t\tServiceRoleArn: String\r\n\t\tHttpConfig:\r\n\t\t\tHttpConfig\r\n\t\tLambdaConfig:\r\n\t\t\tLambdaConfig\r\n\t\tApiId: String #required\r\n\t\tName: String #required\r\n\t\tDynamoDBConfig:\r\n\t\t\tDynamoDBConfig\r\n\t\tElasticsearchConfig:\r\n\t\t\tElasticsearchConfig\r\n",
+        "description": "AWS::AppSync::DataSource\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-datasource.html"
+    },
+    "AWS::ServiceCatalog::PortfolioShare": {
+        "prefix": "servicecatalog-portfolioshare",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::PortfolioShare\"\r\n\tProperties:\r\n\t\tAccountId: String #required\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n",
+        "description": "AWS::ServiceCatalog::PortfolioShare\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioshare.html"
     },
     "AWS::Cognito::IdentityPoolRoleAttachment": {
         "prefix": "cognito-identitypoolroleattachment",
@@ -86,7 +101,7 @@
     },
     "AWS::Elasticsearch::Domain": {
         "prefix": "elasticsearch-domain",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Elasticsearch::Domain\"\r\n\tProperties:\r\n\t\tAccessPolicies: Json\r\n\t\tAdvancedOptions:\r\n\t\t\tMap\r\n\t\tDomainName: String\r\n\t\tEBSOptions:\r\n\t\t\tEBSOptions\r\n\t\tElasticsearchClusterConfig:\r\n\t\t\tElasticsearchClusterConfig\r\n\t\tElasticsearchVersion: String\r\n\t\tSnapshotOptions:\r\n\t\t\tSnapshotOptions\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVPCOptions:\r\n\t\t\tVPCOptions\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Elasticsearch::Domain\"\r\n\tProperties:\r\n\t\tAccessPolicies: Json\r\n\t\tAdvancedOptions:\r\n\t\t\tMap\r\n\t\tDomainName: String\r\n\t\tEBSOptions:\r\n\t\t\tEBSOptions\r\n\t\tElasticsearchClusterConfig:\r\n\t\t\tElasticsearchClusterConfig\r\n\t\tElasticsearchVersion: String\r\n\t\tEncryptionAtRestOptions:\r\n\t\t\tEncryptionAtRestOptions\r\n\t\tSnapshotOptions:\r\n\t\t\tSnapshotOptions\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVPCOptions:\r\n\t\t\tVPCOptions\r\n",
         "description": "AWS::Elasticsearch::Domain\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html"
     },
     "AWS::ApiGateway::RequestValidator": {
@@ -94,10 +109,10 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApiGateway::RequestValidator\"\r\n\tProperties:\r\n\t\tName: String\r\n\t\tRestApiId: String #required\r\n\t\tValidateRequestBody: Boolean\r\n\t\tValidateRequestParameters: Boolean\r\n",
         "description": "AWS::ApiGateway::RequestValidator\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-requestvalidator.html"
     },
-    "AWS::WAFRegional::SizeConstraintSet": {
-        "prefix": "wafregional-sizeconstraintset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::SizeConstraintSet\"\r\n\tProperties:\r\n\t\tSizeConstraints:\r\n\t\t\t- SizeConstraint\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::SizeConstraintSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sizeconstraintset.html"
+    "AWS::EMR::InstanceFleetConfig": {
+        "prefix": "emr-instancefleetconfig",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EMR::InstanceFleetConfig\"\r\n\tProperties:\r\n\t\tClusterId: String #required\r\n\t\tInstanceFleetType: String #required\r\n\t\tInstanceTypeConfigs:\r\n\t\t\t- InstanceTypeConfig\r\n\t\tLaunchSpecifications:\r\n\t\t\tInstanceFleetProvisioningSpecifications\r\n\t\tName: String\r\n\t\tTargetOnDemandCapacity: Integer\r\n\t\tTargetSpotCapacity: Integer\r\n",
+        "description": "AWS::EMR::InstanceFleetConfig\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-instancefleetconfig.html"
     },
     "AWS::RDS::DBSecurityGroupIngress": {
         "prefix": "rds-dbsecuritygroupingress",
@@ -109,15 +124,10 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::WorkSpaces::Workspace\"\r\n\tProperties:\r\n\t\tBundleId: String #required\r\n\t\tDirectoryId: String #required\r\n\t\tRootVolumeEncryptionEnabled: Boolean\r\n\t\tUserName: String #required\r\n\t\tUserVolumeEncryptionEnabled: Boolean\r\n\t\tVolumeEncryptionKey: String\r\n",
         "description": "AWS::WorkSpaces::Workspace\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspace.html"
     },
-    "AWS::EMR::InstanceFleetConfig": {
-        "prefix": "emr-instancefleetconfig",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EMR::InstanceFleetConfig\"\r\n\tProperties:\r\n\t\tClusterId: String #required\r\n\t\tInstanceFleetType: String #required\r\n\t\tInstanceTypeConfigs:\r\n\t\t\t- InstanceTypeConfig\r\n\t\tLaunchSpecifications:\r\n\t\t\tInstanceFleetProvisioningSpecifications\r\n\t\tName: String\r\n\t\tTargetOnDemandCapacity: Integer\r\n\t\tTargetSpotCapacity: Integer\r\n",
-        "description": "AWS::EMR::InstanceFleetConfig\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-instancefleetconfig.html"
-    },
-    "AWS::WAFRegional::SqlInjectionMatchSet": {
-        "prefix": "wafregional-sqlinjectionmatchset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::SqlInjectionMatchSet\"\r\n\tProperties:\r\n\t\tSqlInjectionMatchTuples:\r\n\t\t\t- SqlInjectionMatchTuple\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::SqlInjectionMatchSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sqlinjectionmatchset.html"
+    "AWS::CodePipeline::Webhook": {
+        "prefix": "codepipeline-webhook",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodePipeline::Webhook\"\r\n\tProperties:\r\n\t\tAuthenticationConfiguration: #required\r\n\t\t\tWebhookAuthConfiguration\r\n\t\tFilters: #required\r\n\t\t\t- WebhookFilterRule\r\n\t\tAuthentication: String #required\r\n\t\tTargetPipeline: String #required\r\n\t\tTargetAction: String #required\r\n\t\tName: String\r\n\t\tTargetPipelineVersion: Integer #required\r\n\t\tRegisterWithThirdParty: Boolean\r\n",
+        "description": "AWS::CodePipeline::Webhook\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-webhook.html"
     },
     "AWS::Logs::LogGroup": {
         "prefix": "logs-loggroup",
@@ -131,7 +141,7 @@
     },
     "AWS::AutoScaling::LaunchConfiguration": {
         "prefix": "autoscaling-launchconfiguration",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AutoScaling::LaunchConfiguration\"\r\n\tProperties:\r\n\t\tAssociatePublicIpAddress: Boolean\r\n\t\tBlockDeviceMappings:\r\n\t\t\t- BlockDeviceMapping\r\n\t\tClassicLinkVPCId: String\r\n\t\tClassicLinkVPCSecurityGroups:\r\n\t\t\t- String\r\n\t\tEbsOptimized: Boolean\r\n\t\tIamInstanceProfile: String\r\n\t\tImageId: String #required\r\n\t\tInstanceId: String\r\n\t\tInstanceMonitoring: Boolean\r\n\t\tInstanceType: String #required\r\n\t\tKernelId: String\r\n\t\tKeyName: String\r\n\t\tPlacementTenancy: String\r\n\t\tRamDiskId: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSpotPrice: String\r\n\t\tUserData: String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AutoScaling::LaunchConfiguration\"\r\n\tProperties:\r\n\t\tAssociatePublicIpAddress: Boolean\r\n\t\tBlockDeviceMappings:\r\n\t\t\t- BlockDeviceMapping\r\n\t\tClassicLinkVPCId: String\r\n\t\tClassicLinkVPCSecurityGroups:\r\n\t\t\t- String\r\n\t\tEbsOptimized: Boolean\r\n\t\tIamInstanceProfile: String\r\n\t\tImageId: String #required\r\n\t\tInstanceId: String\r\n\t\tInstanceMonitoring: Boolean\r\n\t\tInstanceType: String #required\r\n\t\tKernelId: String\r\n\t\tKeyName: String\r\n\t\tLaunchConfigurationName: String\r\n\t\tPlacementTenancy: String\r\n\t\tRamDiskId: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSpotPrice: String\r\n\t\tUserData: String\r\n",
         "description": "AWS::AutoScaling::LaunchConfiguration\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-launchconfig.html"
     },
     "AWS::SQS::Queue": {
@@ -139,10 +149,10 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::SQS::Queue\"\r\n\tProperties:\r\n\t\tContentBasedDeduplication: Boolean\r\n\t\tDelaySeconds: Integer\r\n\t\tFifoQueue: Boolean\r\n\t\tKmsDataKeyReusePeriodSeconds: Integer\r\n\t\tKmsMasterKeyId: String\r\n\t\tMaximumMessageSize: Integer\r\n\t\tMessageRetentionPeriod: Integer\r\n\t\tQueueName: String\r\n\t\tReceiveMessageWaitTimeSeconds: Integer\r\n\t\tRedrivePolicy: Json\r\n\t\tVisibilityTimeout: Integer\r\n",
         "description": "AWS::SQS::Queue\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html"
     },
-    "AWS::WAFRegional::XssMatchSet": {
-        "prefix": "wafregional-xssmatchset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::XssMatchSet\"\r\n\tProperties:\r\n\t\tXssMatchTuples:\r\n\t\t\t- XssMatchTuple\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::XssMatchSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html"
+    "AWS::AppSync::Resolver": {
+        "prefix": "appsync-resolver",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AppSync::Resolver\"\r\n\tProperties:\r\n\t\tResponseMappingTemplateS3Location: String\r\n\t\tTypeName: String #required\r\n\t\tDataSourceName: String #required\r\n\t\tRequestMappingTemplate: String\r\n\t\tResponseMappingTemplate: String\r\n\t\tRequestMappingTemplateS3Location: String\r\n\t\tApiId: String #required\r\n\t\tFieldName: String #required\r\n",
+        "description": "AWS::AppSync::Resolver\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html"
     },
     "AWS::Route53::RecordSet": {
         "prefix": "route53-recordset",
@@ -164,20 +174,20 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CloudWatch::Dashboard\"\r\n\tProperties:\r\n\t\tDashboardName: String\r\n\t\tDashboardBody: String #required\r\n",
         "description": "AWS::CloudWatch::Dashboard\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html"
     },
-    "AWS::IAM::Policy": {
-        "prefix": "iam-policy",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::Policy\"\r\n\tProperties:\r\n\t\tGroups:\r\n\t\t\t- String\r\n\t\tPolicyDocument: Json #required\r\n\t\tPolicyName: String #required\r\n\t\tRoles:\r\n\t\t\t- String\r\n\t\tUsers:\r\n\t\t\t- String\r\n",
-        "description": "AWS::IAM::Policy\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html"
+    "AWS::ECS::Cluster": {
+        "prefix": "ecs-cluster",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ECS::Cluster\"\r\n\tProperties:\r\n\t\tClusterName: String\r\n",
+        "description": "AWS::ECS::Cluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html"
     },
     "AWS::EC2::InternetGateway": {
         "prefix": "ec2-internetgateway",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::InternetGateway\"\r\n\tProperties:\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::EC2::InternetGateway\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html"
     },
-    "AWS::ECS::Cluster": {
-        "prefix": "ecs-cluster",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ECS::Cluster\"\r\n\tProperties:\r\n\t\tClusterName: String\r\n",
-        "description": "AWS::ECS::Cluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html"
+    "AWS::IAM::Policy": {
+        "prefix": "iam-policy",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::Policy\"\r\n\tProperties:\r\n\t\tGroups:\r\n\t\t\t- String\r\n\t\tPolicyDocument: Json #required\r\n\t\tPolicyName: String #required\r\n\t\tRoles:\r\n\t\t\t- String\r\n\t\tUsers:\r\n\t\t\t- String\r\n",
+        "description": "AWS::IAM::Policy\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html"
     },
     "AWS::ElasticLoadBalancingV2::ListenerCertificate": {
         "prefix": "elasticloadbalancingv2-listenercertificate",
@@ -186,28 +196,43 @@
     },
     "AWS::IAM::Role": {
         "prefix": "iam-role",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::Role\"\r\n\tProperties:\r\n\t\tAssumeRolePolicyDocument: Json #required\r\n\t\tManagedPolicyArns:\r\n\t\t\t- String\r\n\t\tPath: String\r\n\t\tPolicies:\r\n\t\t\t- Policy\r\n\t\tRoleName: String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::Role\"\r\n\tProperties:\r\n\t\tAssumeRolePolicyDocument: Json #required\r\n\t\tManagedPolicyArns:\r\n\t\t\t- String\r\n\t\tMaxSessionDuration: Integer\r\n\t\tPath: String\r\n\t\tPolicies:\r\n\t\t\t- Policy\r\n\t\tRoleName: String\r\n",
         "description": "AWS::IAM::Role\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html"
     },
-    "AWS::StepFunctions::Activity": {
-        "prefix": "stepfunctions-activity",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::StepFunctions::Activity\"\r\n\tProperties:\r\n\t\tName: String #required\r\n",
-        "description": "AWS::StepFunctions::Activity\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-activity.html"
-    },
-    "AWS::KinesisAnalytics::ApplicationOutput": {
-        "prefix": "kinesisanalytics-applicationoutput",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KinesisAnalytics::ApplicationOutput\"\r\n\tProperties:\r\n\t\tApplicationName: String #required\r\n\t\tOutput: #required\r\n\t\t\tOutput\r\n",
-        "description": "AWS::KinesisAnalytics::ApplicationOutput\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalytics-applicationoutput.html"
+    "AWS::EC2::LaunchTemplate": {
+        "prefix": "ec2-launchtemplate",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::LaunchTemplate\"\r\n\tProperties:\r\n\t\tLaunchTemplateName: String\r\n\t\tLaunchTemplateData:\r\n\t\t\tLaunchTemplateData\r\n",
+        "description": "AWS::EC2::LaunchTemplate\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"
     },
     "AWS::OpsWorks::Volume": {
         "prefix": "opsworks-volume",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::OpsWorks::Volume\"\r\n\tProperties:\r\n\t\tEc2VolumeId: String #required\r\n\t\tMountPoint: String\r\n\t\tName: String\r\n\t\tStackId: String #required\r\n",
         "description": "AWS::OpsWorks::Volume\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworks-volume.html"
     },
+    "AWS::ServiceCatalog::TagOptionAssociation": {
+        "prefix": "servicecatalog-tagoptionassociation",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::TagOptionAssociation\"\r\n\tProperties:\r\n\t\tTagOptionId: String #required\r\n\t\tResourceId: String #required\r\n",
+        "description": "AWS::ServiceCatalog::TagOptionAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-tagoptionassociation.html"
+    },
     "AWS::EC2::Volume": {
         "prefix": "ec2-volume",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::Volume\"\r\n\tProperties:\r\n\t\tAutoEnableIO: Boolean\r\n\t\tAvailabilityZone: String #required\r\n\t\tEncrypted: Boolean\r\n\t\tIops: Integer\r\n\t\tKmsKeyId: String\r\n\t\tSize: Integer\r\n\t\tSnapshotId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVolumeType: String\r\n",
         "description": "AWS::EC2::Volume\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html"
+    },
+    "AWS::AppSync::GraphQLSchema": {
+        "prefix": "appsync-graphqlschema",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AppSync::GraphQLSchema\"\r\n\tProperties:\r\n\t\tDefinition: String\r\n\t\tDefinitionS3Location: String\r\n\t\tApiId: String #required\r\n",
+        "description": "AWS::AppSync::GraphQLSchema\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlschema.html"
+    },
+    "AWS::IAM::ServiceLinkedRole": {
+        "prefix": "iam-servicelinkedrole",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::ServiceLinkedRole\"\r\n\tProperties:\r\n\t\tCustomSuffix: String\r\n\t\tDescription: String\r\n\t\tAWSServiceName: String #required\r\n",
+        "description": "AWS::IAM::ServiceLinkedRole\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-servicelinkedrole.html"
+    },
+    "AWS::ServiceCatalog::LaunchTemplateConstraint": {
+        "prefix": "servicecatalog-launchtemplateconstraint",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::LaunchTemplateConstraint\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n\t\tProductId: String #required\r\n\t\tRules: String #required\r\n",
+        "description": "AWS::ServiceCatalog::LaunchTemplateConstraint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-launchtemplateconstraint.html"
     },
     "AWS::EMR::Cluster": {
         "prefix": "emr-cluster",
@@ -224,25 +249,35 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CloudFront::StreamingDistribution\"\r\n\tProperties:\r\n\t\tStreamingDistributionConfig: #required\r\n\t\t\tStreamingDistributionConfig\r\n\t\tTags: #required\r\n\t\t\t- Tag\r\n",
         "description": "AWS::CloudFront::StreamingDistribution\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html"
     },
+    "AWS::AppSync::GraphQLApi": {
+        "prefix": "appsync-graphqlapi",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AppSync::GraphQLApi\"\r\n\tProperties:\r\n\t\tOpenIDConnectConfig:\r\n\t\t\tOpenIDConnectConfig\r\n\t\tUserPoolConfig:\r\n\t\t\tUserPoolConfig\r\n\t\tName: String #required\r\n\t\tAuthenticationType: String #required\r\n\t\tLogConfig:\r\n\t\t\tLogConfig\r\n",
+        "description": "AWS::AppSync::GraphQLApi\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html"
+    },
     "AWS::GameLift::Alias": {
         "prefix": "gamelift-alias",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::GameLift::Alias\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tName: String #required\r\n\t\tRoutingStrategy: #required\r\n\t\t\tRoutingStrategy\r\n",
         "description": "AWS::GameLift::Alias\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-alias.html"
+    },
+    "AWS::GuardDuty::Filter": {
+        "prefix": "guardduty-filter",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::GuardDuty::Filter\"\r\n\tProperties:\r\n\t\tAction: String #required\r\n\t\tDescription: String #required\r\n\t\tDetectorId: String #required\r\n\t\tFindingCriteria: #required\r\n\t\t\tFindingCriteria\r\n\t\tRank: Integer #required\r\n\t\tName: String\r\n",
+        "description": "AWS::GuardDuty::Filter\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html"
     },
     "AWS::EC2::VPNConnectionRoute": {
         "prefix": "ec2-vpnconnectionroute",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPNConnectionRoute\"\r\n\tProperties:\r\n\t\tDestinationCidrBlock: String #required\r\n\t\tVpnConnectionId: String #required\r\n",
         "description": "AWS::EC2::VPNConnectionRoute\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection-route.html"
     },
-    "AWS::DirectoryService::MicrosoftAD": {
-        "prefix": "directoryservice-microsoftad",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DirectoryService::MicrosoftAD\"\r\n\tProperties:\r\n\t\tCreateAlias: Boolean\r\n\t\tEnableSso: Boolean\r\n\t\tName: String #required\r\n\t\tPassword: String #required\r\n\t\tShortName: String\r\n\t\tVpcSettings: #required\r\n\t\t\tVpcSettings\r\n",
-        "description": "AWS::DirectoryService::MicrosoftAD\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-microsoftad.html"
-    },
     "AWS::WAF::Rule": {
         "prefix": "waf-rule",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAF::Rule\"\r\n\tProperties:\r\n\t\tMetricName: String #required\r\n\t\tName: String #required\r\n\t\tPredicates:\r\n\t\t\t- Predicate\r\n",
         "description": "AWS::WAF::Rule\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html"
+    },
+    "AWS::DirectoryService::MicrosoftAD": {
+        "prefix": "directoryservice-microsoftad",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DirectoryService::MicrosoftAD\"\r\n\tProperties:\r\n\t\tCreateAlias: Boolean\r\n\t\tEdition: String\r\n\t\tEnableSso: Boolean\r\n\t\tName: String #required\r\n\t\tPassword: String #required\r\n\t\tShortName: String\r\n\t\tVpcSettings: #required\r\n\t\t\tVpcSettings\r\n",
+        "description": "AWS::DirectoryService::MicrosoftAD\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-microsoftad.html"
     },
     "AWS::SNS::Subscription": {
         "prefix": "sns-subscription",
@@ -256,8 +291,13 @@
     },
     "AWS::SSM::Document": {
         "prefix": "ssm-document",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::Document\"\r\n\tProperties:\r\n\t\tContent: Json #required\r\n\t\tDocumentType: String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::Document\"\r\n\tProperties:\r\n\t\tContent: Json #required\r\n\t\tDocumentType: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::SSM::Document\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-document.html"
+    },
+    "AWS::Config::DeliveryChannel": {
+        "prefix": "config-deliverychannel",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Config::DeliveryChannel\"\r\n\tProperties:\r\n\t\tConfigSnapshotDeliveryProperties:\r\n\t\t\tConfigSnapshotDeliveryProperties\r\n\t\tName: String\r\n\t\tS3BucketName: String #required\r\n\t\tS3KeyPrefix: String\r\n\t\tSnsTopicARN: String\r\n",
+        "description": "AWS::Config::DeliveryChannel\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-deliverychannel.html"
     },
     "AWS::SNS::Topic": {
         "prefix": "sns-topic",
@@ -269,15 +309,15 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::NetworkInterfacePermission\"\r\n\tProperties:\r\n\t\tAwsAccountId: String #required\r\n\t\tNetworkInterfaceId: String #required\r\n\t\tPermission: String #required\r\n",
         "description": "AWS::EC2::NetworkInterfacePermission\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html"
     },
-    "AWS::Config::DeliveryChannel": {
-        "prefix": "config-deliverychannel",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Config::DeliveryChannel\"\r\n\tProperties:\r\n\t\tConfigSnapshotDeliveryProperties:\r\n\t\t\tConfigSnapshotDeliveryProperties\r\n\t\tName: String\r\n\t\tS3BucketName: String #required\r\n\t\tS3KeyPrefix: String\r\n\t\tSnsTopicARN: String\r\n",
-        "description": "AWS::Config::DeliveryChannel\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-deliverychannel.html"
-    },
     "AWS::GameLift::Build": {
         "prefix": "gamelift-build",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::GameLift::Build\"\r\n\tProperties:\r\n\t\tName: String\r\n\t\tStorageLocation:\r\n\t\t\tS3Location\r\n\t\tVersion: String\r\n",
         "description": "AWS::GameLift::Build\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-build.html"
+    },
+    "AWS::ServiceCatalog::TagOption": {
+        "prefix": "servicecatalog-tagoption",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::TagOption\"\r\n\tProperties:\r\n\t\tActive: Boolean\r\n\t\tValue: String #required\r\n\t\tKey: String #required\r\n",
+        "description": "AWS::ServiceCatalog::TagOption\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-tagoption.html"
     },
     "AWS::ApiGateway::Deployment": {
         "prefix": "apigateway-deployment",
@@ -294,15 +334,15 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::KMS::Key\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tEnableKeyRotation: Boolean\r\n\t\tEnabled: Boolean\r\n\t\tKeyPolicy: Json #required\r\n\t\tKeyUsage: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::KMS::Key\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html"
     },
-    "AWS::Redshift::Cluster": {
-        "prefix": "redshift-cluster",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Redshift::Cluster\"\r\n\tProperties:\r\n\t\tAllowVersionUpgrade: Boolean\r\n\t\tAutomatedSnapshotRetentionPeriod: Integer\r\n\t\tAvailabilityZone: String\r\n\t\tClusterParameterGroupName: String\r\n\t\tClusterSecurityGroups:\r\n\t\t\t- String\r\n\t\tClusterSubnetGroupName: String\r\n\t\tClusterType: String #required\r\n\t\tClusterVersion: String\r\n\t\tDBName: String #required\r\n\t\tElasticIp: String\r\n\t\tEncrypted: Boolean\r\n\t\tHsmClientCertificateIdentifier: String\r\n\t\tHsmConfigurationIdentifier: String\r\n\t\tIamRoles:\r\n\t\t\t- String\r\n\t\tKmsKeyId: String\r\n\t\tLoggingProperties:\r\n\t\t\tLoggingProperties\r\n\t\tMasterUserPassword: String #required\r\n\t\tMasterUsername: String #required\r\n\t\tNodeType: String #required\r\n\t\tNumberOfNodes: Integer\r\n\t\tOwnerAccount: String\r\n\t\tPort: Integer\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tPubliclyAccessible: Boolean\r\n\t\tSnapshotClusterIdentifier: String\r\n\t\tSnapshotIdentifier: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcSecurityGroupIds:\r\n\t\t\t- String\r\n",
-        "description": "AWS::Redshift::Cluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html"
-    },
     "AWS::CloudWatch::Alarm": {
         "prefix": "cloudwatch-alarm",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CloudWatch::Alarm\"\r\n\tProperties:\r\n\t\tActionsEnabled: Boolean\r\n\t\tAlarmActions:\r\n\t\t\t- String\r\n\t\tAlarmDescription: String\r\n\t\tAlarmName: String\r\n\t\tComparisonOperator: String #required\r\n\t\tDimensions:\r\n\t\t\t- Dimension\r\n\t\tEvaluateLowSampleCountPercentile: String\r\n\t\tEvaluationPeriods: Integer #required\r\n\t\tExtendedStatistic: String\r\n\t\tInsufficientDataActions:\r\n\t\t\t- String\r\n\t\tMetricName: String #required\r\n\t\tNamespace: String #required\r\n\t\tOKActions:\r\n\t\t\t- String\r\n\t\tPeriod: Integer #required\r\n\t\tStatistic: String\r\n\t\tThreshold: Double #required\r\n\t\tTreatMissingData: String\r\n\t\tUnit: String\r\n",
         "description": "AWS::CloudWatch::Alarm\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html"
+    },
+    "AWS::Redshift::Cluster": {
+        "prefix": "redshift-cluster",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Redshift::Cluster\"\r\n\tProperties:\r\n\t\tAllowVersionUpgrade: Boolean\r\n\t\tAutomatedSnapshotRetentionPeriod: Integer\r\n\t\tAvailabilityZone: String\r\n\t\tClusterIdentifier: String\r\n\t\tClusterParameterGroupName: String\r\n\t\tClusterSecurityGroups:\r\n\t\t\t- String\r\n\t\tClusterSubnetGroupName: String\r\n\t\tClusterType: String #required\r\n\t\tClusterVersion: String\r\n\t\tDBName: String #required\r\n\t\tElasticIp: String\r\n\t\tEncrypted: Boolean\r\n\t\tHsmClientCertificateIdentifier: String\r\n\t\tHsmConfigurationIdentifier: String\r\n\t\tIamRoles:\r\n\t\t\t- String\r\n\t\tKmsKeyId: String\r\n\t\tLoggingProperties:\r\n\t\t\tLoggingProperties\r\n\t\tMasterUserPassword: String #required\r\n\t\tMasterUsername: String #required\r\n\t\tNodeType: String #required\r\n\t\tNumberOfNodes: Integer\r\n\t\tOwnerAccount: String\r\n\t\tPort: Integer\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tPubliclyAccessible: Boolean\r\n\t\tSnapshotClusterIdentifier: String\r\n\t\tSnapshotIdentifier: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcSecurityGroupIds:\r\n\t\t\t- String\r\n",
+        "description": "AWS::Redshift::Cluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html"
     },
     "AWS::OpsWorks::App": {
         "prefix": "opsworks-app",
@@ -311,12 +351,12 @@
     },
     "AWS::Lambda::EventSourceMapping": {
         "prefix": "lambda-eventsourcemapping",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Lambda::EventSourceMapping\"\r\n\tProperties:\r\n\t\tBatchSize: Integer\r\n\t\tEnabled: Boolean\r\n\t\tEventSourceArn: String #required\r\n\t\tFunctionName: String #required\r\n\t\tStartingPosition: String #required\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Lambda::EventSourceMapping\"\r\n\tProperties:\r\n\t\tBatchSize: Integer\r\n\t\tEnabled: Boolean\r\n\t\tEventSourceArn: String #required\r\n\t\tFunctionName: String #required\r\n\t\tStartingPosition: String\r\n",
         "description": "AWS::Lambda::EventSourceMapping\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html"
     },
     "AWS::CertificateManager::Certificate": {
         "prefix": "certificatemanager-certificate",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CertificateManager::Certificate\"\r\n\tProperties:\r\n\t\tDomainName: String #required\r\n\t\tDomainValidationOptions:\r\n\t\t\t- DomainValidationOption\r\n\t\tSubjectAlternativeNames:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CertificateManager::Certificate\"\r\n\tProperties:\r\n\t\tDomainName: String #required\r\n\t\tDomainValidationOptions:\r\n\t\t\t- DomainValidationOption\r\n\t\tSubjectAlternativeNames:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tValidationMethod: String\r\n",
         "description": "AWS::CertificateManager::Certificate\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html"
     },
     "AWS::ApiGateway::Authorizer": {
@@ -341,8 +381,18 @@
     },
     "AWS::Batch::JobDefinition": {
         "prefix": "batch-jobdefinition",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Batch::JobDefinition\"\r\n\tProperties:\r\n\t\tType: String #required\r\n\t\tParameters: Json\r\n\t\tContainerProperties: #required\r\n\t\t\tContainerProperties\r\n\t\tJobDefinitionName: String\r\n\t\tRetryStrategy:\r\n\t\t\tRetryStrategy\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Batch::JobDefinition\"\r\n\tProperties:\r\n\t\tType: String #required\r\n\t\tParameters: Json\r\n\t\tTimeout:\r\n\t\t\tTimeout\r\n\t\tContainerProperties: #required\r\n\t\t\tContainerProperties\r\n\t\tJobDefinitionName: String\r\n\t\tRetryStrategy:\r\n\t\t\tRetryStrategy\r\n",
         "description": "AWS::Batch::JobDefinition\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html"
+    },
+    "AWS::ServiceCatalog::PortfolioPrincipalAssociation": {
+        "prefix": "servicecatalog-portfolioprincipalassociation",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::PortfolioPrincipalAssociation\"\r\n\tProperties:\r\n\t\tPrincipalARN: String #required\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n\t\tPrincipalType: String #required\r\n",
+        "description": "AWS::ServiceCatalog::PortfolioPrincipalAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioprincipalassociation.html"
+    },
+    "AWS::EC2::VPCEndpointConnectionNotification": {
+        "prefix": "ec2-vpcendpointconnectionnotification",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPCEndpointConnectionNotification\"\r\n\tProperties:\r\n\t\tConnectionEvents: #required\r\n\t\t\t- String\r\n\t\tVPCEndpointId: String\r\n\t\tServiceId: String\r\n\t\tConnectionNotificationArn: String #required\r\n",
+        "description": "AWS::EC2::VPCEndpointConnectionNotification\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpointconnectionnotification.html"
     },
     "AWS::GameLift::Fleet": {
         "prefix": "gamelift-fleet",
@@ -361,12 +411,12 @@
     },
     "AWS::RDS::DBCluster": {
         "prefix": "rds-dbcluster",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBCluster\"\r\n\tProperties:\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tBackupRetentionPeriod: Integer\r\n\t\tDBClusterParameterGroupName: String\r\n\t\tDBSubnetGroupName: String\r\n\t\tDatabaseName: String\r\n\t\tEngine: String #required\r\n\t\tEngineVersion: String\r\n\t\tKmsKeyId: String\r\n\t\tMasterUserPassword: String\r\n\t\tMasterUsername: String\r\n\t\tPort: Integer\r\n\t\tPreferredBackupWindow: String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tReplicationSourceIdentifier: String\r\n\t\tSnapshotIdentifier: String\r\n\t\tStorageEncrypted: Boolean\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcSecurityGroupIds:\r\n\t\t\t- String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBCluster\"\r\n\tProperties:\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tBackupRetentionPeriod: Integer\r\n\t\tDBClusterIdentifier: String\r\n\t\tDBClusterParameterGroupName: String\r\n\t\tDBSubnetGroupName: String\r\n\t\tDatabaseName: String\r\n\t\tEngine: String #required\r\n\t\tEngineVersion: String\r\n\t\tKmsKeyId: String\r\n\t\tMasterUserPassword: String\r\n\t\tMasterUsername: String\r\n\t\tPort: Integer\r\n\t\tPreferredBackupWindow: String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tReplicationSourceIdentifier: String\r\n\t\tSnapshotIdentifier: String\r\n\t\tStorageEncrypted: Boolean\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcSecurityGroupIds:\r\n\t\t\t- String\r\n",
         "description": "AWS::RDS::DBCluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html"
     },
     "AWS::ECS::Service": {
         "prefix": "ecs-service",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ECS::Service\"\r\n\tProperties:\r\n\t\tCluster: String\r\n\t\tDeploymentConfiguration:\r\n\t\t\tDeploymentConfiguration\r\n\t\tDesiredCount: Integer\r\n\t\tHealthCheckGracePeriodSeconds: Integer\r\n\t\tLaunchType: String\r\n\t\tLoadBalancers:\r\n\t\t\t- LoadBalancer\r\n\t\tNetworkConfiguration:\r\n\t\t\tNetworkConfiguration\r\n\t\tPlacementConstraints:\r\n\t\t\t- PlacementConstraint\r\n\t\tPlacementStrategies:\r\n\t\t\t- PlacementStrategy\r\n\t\tPlatformVersion: String\r\n\t\tRole: String\r\n\t\tServiceName: String\r\n\t\tTaskDefinition: String #required\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ECS::Service\"\r\n\tProperties:\r\n\t\tCluster: String\r\n\t\tDeploymentConfiguration:\r\n\t\t\tDeploymentConfiguration\r\n\t\tDesiredCount: Integer\r\n\t\tHealthCheckGracePeriodSeconds: Integer\r\n\t\tLaunchType: String\r\n\t\tLoadBalancers:\r\n\t\t\t- LoadBalancer\r\n\t\tNetworkConfiguration:\r\n\t\t\tNetworkConfiguration\r\n\t\tPlacementConstraints:\r\n\t\t\t- PlacementConstraint\r\n\t\tPlacementStrategies:\r\n\t\t\t- PlacementStrategy\r\n\t\tPlatformVersion: String\r\n\t\tRole: String\r\n\t\tServiceName: String\r\n\t\tServiceRegistries:\r\n\t\t\t- ServiceRegistry\r\n\t\tTaskDefinition: String #required\r\n",
         "description": "AWS::ECS::Service\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html"
     },
     "AWS::IAM::UserToGroupAddition": {
@@ -379,20 +429,20 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBSubnetGroup\"\r\n\tProperties:\r\n\t\tDBSubnetGroupDescription: String #required\r\n\t\tDBSubnetGroupName: String\r\n\t\tSubnetIds: #required\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::RDS::DBSubnetGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbsubnet-group.html"
     },
-    "AWS::ElasticLoadBalancing::LoadBalancer": {
-        "prefix": "elasticloadbalancing-loadbalancer",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticLoadBalancing::LoadBalancer\"\r\n\tProperties:\r\n\t\tAccessLoggingPolicy:\r\n\t\t\tAccessLoggingPolicy\r\n\t\tAppCookieStickinessPolicy:\r\n\t\t\t- AppCookieStickinessPolicy\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tConnectionDrainingPolicy:\r\n\t\t\tConnectionDrainingPolicy\r\n\t\tConnectionSettings:\r\n\t\t\tConnectionSettings\r\n\t\tCrossZone: Boolean\r\n\t\tHealthCheck:\r\n\t\t\tHealthCheck\r\n\t\tInstances:\r\n\t\t\t- String\r\n\t\tLBCookieStickinessPolicy:\r\n\t\t\t- LBCookieStickinessPolicy\r\n\t\tListeners: #required\r\n\t\t\t- Listeners\r\n\t\tLoadBalancerName: String\r\n\t\tPolicies:\r\n\t\t\t- Policies\r\n\t\tScheme: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSubnets:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
-        "description": "AWS::ElasticLoadBalancing::LoadBalancer\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html"
+    "AWS::IoT::Thing": {
+        "prefix": "iot-thing",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IoT::Thing\"\r\n\tProperties:\r\n\t\tAttributePayload:\r\n\t\t\tAttributePayload\r\n\t\tThingName: String\r\n",
+        "description": "AWS::IoT::Thing\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html"
     },
     "AWS::Batch::JobQueue": {
         "prefix": "batch-jobqueue",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Batch::JobQueue\"\r\n\tProperties:\r\n\t\tComputeEnvironmentOrder: #required\r\n\t\t\t- ComputeEnvironmentOrder\r\n\t\tPriority: Integer #required\r\n\t\tState: String\r\n\t\tJobQueueName: String\r\n",
         "description": "AWS::Batch::JobQueue\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html"
     },
-    "AWS::IoT::Thing": {
-        "prefix": "iot-thing",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::IoT::Thing\"\r\n\tProperties:\r\n\t\tAttributePayload:\r\n\t\t\tAttributePayload\r\n\t\tThingName: String\r\n",
-        "description": "AWS::IoT::Thing\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html"
+    "AWS::ElasticLoadBalancing::LoadBalancer": {
+        "prefix": "elasticloadbalancing-loadbalancer",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticLoadBalancing::LoadBalancer\"\r\n\tProperties:\r\n\t\tAccessLoggingPolicy:\r\n\t\t\tAccessLoggingPolicy\r\n\t\tAppCookieStickinessPolicy:\r\n\t\t\t- AppCookieStickinessPolicy\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tConnectionDrainingPolicy:\r\n\t\t\tConnectionDrainingPolicy\r\n\t\tConnectionSettings:\r\n\t\t\tConnectionSettings\r\n\t\tCrossZone: Boolean\r\n\t\tHealthCheck:\r\n\t\t\tHealthCheck\r\n\t\tInstances:\r\n\t\t\t- String\r\n\t\tLBCookieStickinessPolicy:\r\n\t\t\t- LBCookieStickinessPolicy\r\n\t\tListeners: #required\r\n\t\t\t- Listeners\r\n\t\tLoadBalancerName: String\r\n\t\tPolicies:\r\n\t\t\t- Policies\r\n\t\tScheme: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSubnets:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
+        "description": "AWS::ElasticLoadBalancing::LoadBalancer\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html"
     },
     "AWS::OpsWorks::Layer": {
         "prefix": "opsworks-layer",
@@ -419,11 +469,6 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::SubnetRouteTableAssociation\"\r\n\tProperties:\r\n\t\tRouteTableId: String #required\r\n\t\tSubnetId: String #required\r\n",
         "description": "AWS::EC2::SubnetRouteTableAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html"
     },
-    "AWS::ElastiCache::SecurityGroup": {
-        "prefix": "elasticache-securitygroup",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElastiCache::SecurityGroup\"\r\n\tProperties:\r\n\t\tDescription: String #required\r\n",
-        "description": "AWS::ElastiCache::SecurityGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-security-group.html"
-    },
     "AWS::IAM::InstanceProfile": {
         "prefix": "iam-instanceprofile",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::InstanceProfile\"\r\n\tProperties:\r\n\t\tInstanceProfileName: String\r\n\t\tPath: String\r\n\t\tRoles: #required\r\n\t\t\t- String\r\n",
@@ -434,20 +479,25 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::IoT::Policy\"\r\n\tProperties:\r\n\t\tPolicyDocument: Json #required\r\n\t\tPolicyName: String\r\n",
         "description": "AWS::IoT::Policy\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-policy.html"
     },
+    "AWS::ElastiCache::SecurityGroup": {
+        "prefix": "elasticache-securitygroup",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElastiCache::SecurityGroup\"\r\n\tProperties:\r\n\t\tDescription: String #required\r\n",
+        "description": "AWS::ElastiCache::SecurityGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-security-group.html"
+    },
     "AWS::Batch::ComputeEnvironment": {
         "prefix": "batch-computeenvironment",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Batch::ComputeEnvironment\"\r\n\tProperties:\r\n\t\tType: String #required\r\n\t\tServiceRole: String #required\r\n\t\tComputeEnvironmentName: String\r\n\t\tComputeResources: #required\r\n\t\t\tComputeResources\r\n\t\tState: String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Batch::ComputeEnvironment\"\r\n\tProperties:\r\n\t\tType: String #required\r\n\t\tServiceRole: String #required\r\n\t\tComputeEnvironmentName: String\r\n\t\tComputeResources:\r\n\t\t\tComputeResources\r\n\t\tState: String\r\n",
         "description": "AWS::Batch::ComputeEnvironment\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html"
-    },
-    "AWS::CodeDeploy::DeploymentGroup": {
-        "prefix": "codedeploy-deploymentgroup",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeDeploy::DeploymentGroup\"\r\n\tProperties:\r\n\t\tAlarmConfiguration:\r\n\t\t\tAlarmConfiguration\r\n\t\tApplicationName: String #required\r\n\t\tAutoRollbackConfiguration:\r\n\t\t\tAutoRollbackConfiguration\r\n\t\tAutoScalingGroups:\r\n\t\t\t- String\r\n\t\tDeployment:\r\n\t\t\tDeployment\r\n\t\tDeploymentConfigName: String\r\n\t\tDeploymentGroupName: String\r\n\t\tDeploymentStyle:\r\n\t\t\tDeploymentStyle\r\n\t\tEc2TagFilters:\r\n\t\t\t- EC2TagFilter\r\n\t\tLoadBalancerInfo:\r\n\t\t\tLoadBalancerInfo\r\n\t\tOnPremisesInstanceTagFilters:\r\n\t\t\t- TagFilter\r\n\t\tServiceRoleArn: String #required\r\n\t\tTriggerConfigurations:\r\n\t\t\t- TriggerConfig\r\n",
-        "description": "AWS::CodeDeploy::DeploymentGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html"
     },
     "AWS::ApiGateway::Model": {
         "prefix": "apigateway-model",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApiGateway::Model\"\r\n\tProperties:\r\n\t\tContentType: String\r\n\t\tDescription: String\r\n\t\tName: String\r\n\t\tRestApiId: String #required\r\n\t\tSchema: Json\r\n",
         "description": "AWS::ApiGateway::Model\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-model.html"
+    },
+    "AWS::CodeDeploy::DeploymentGroup": {
+        "prefix": "codedeploy-deploymentgroup",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeDeploy::DeploymentGroup\"\r\n\tProperties:\r\n\t\tAlarmConfiguration:\r\n\t\t\tAlarmConfiguration\r\n\t\tApplicationName: String #required\r\n\t\tAutoRollbackConfiguration:\r\n\t\t\tAutoRollbackConfiguration\r\n\t\tAutoScalingGroups:\r\n\t\t\t- String\r\n\t\tDeployment:\r\n\t\t\tDeployment\r\n\t\tDeploymentConfigName: String\r\n\t\tDeploymentGroupName: String\r\n\t\tDeploymentStyle:\r\n\t\t\tDeploymentStyle\r\n\t\tEc2TagFilters:\r\n\t\t\t- EC2TagFilter\r\n\t\tLoadBalancerInfo:\r\n\t\t\tLoadBalancerInfo\r\n\t\tOnPremisesInstanceTagFilters:\r\n\t\t\t- TagFilter\r\n\t\tServiceRoleArn: String #required\r\n\t\tTriggerConfigurations:\r\n\t\t\t- TriggerConfig\r\n",
+        "description": "AWS::CodeDeploy::DeploymentGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html"
     },
     "AWS::EC2::Route": {
         "prefix": "ec2-route",
@@ -484,20 +534,20 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cognito::IdentityPool\"\r\n\tProperties:\r\n\t\tPushSync:\r\n\t\t\tPushSync\r\n\t\tCognitoIdentityProviders:\r\n\t\t\t- CognitoIdentityProvider\r\n\t\tCognitoEvents: Json\r\n\t\tDeveloperProviderName: String\r\n\t\tCognitoStreams:\r\n\t\t\tCognitoStreams\r\n\t\tIdentityPoolName: String\r\n\t\tAllowUnauthenticatedIdentities: Boolean #required\r\n\t\tSupportedLoginProviders: Json\r\n\t\tSamlProviderARNs:\r\n\t\t\t- String\r\n\t\tOpenIdConnectProviderARNs:\r\n\t\t\t- String\r\n",
         "description": "AWS::Cognito::IdentityPool\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html"
     },
-    "AWS::ElasticLoadBalancingV2::LoadBalancer": {
-        "prefix": "elasticloadbalancingv2-loadbalancer",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticLoadBalancingV2::LoadBalancer\"\r\n\tProperties:\r\n\t\tIpAddressType: String\r\n\t\tLoadBalancerAttributes:\r\n\t\t\t- LoadBalancerAttribute\r\n\t\tName: String\r\n\t\tScheme: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSubnetMappings:\r\n\t\t\t- SubnetMapping\r\n\t\tSubnets:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tType: String\r\n",
-        "description": "AWS::ElasticLoadBalancingV2::LoadBalancer\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html"
+    "AWS::ElasticBeanstalk::Application": {
+        "prefix": "elasticbeanstalk-application",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticBeanstalk::Application\"\r\n\tProperties:\r\n\t\tApplicationName: String\r\n\t\tDescription: String\r\n\t\tResourceLifecycleConfig:\r\n\t\t\tApplicationResourceLifecycleConfig\r\n",
+        "description": "AWS::ElasticBeanstalk::Application\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk.html"
     },
     "AWS::IAM::AccessKey": {
         "prefix": "iam-accesskey",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::IAM::AccessKey\"\r\n\tProperties:\r\n\t\tSerial: Integer\r\n\t\tStatus: String\r\n\t\tUserName: String #required\r\n",
         "description": "AWS::IAM::AccessKey\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html"
     },
-    "AWS::ElasticBeanstalk::Application": {
-        "prefix": "elasticbeanstalk-application",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticBeanstalk::Application\"\r\n\tProperties:\r\n\t\tApplicationName: String\r\n\t\tDescription: String\r\n\t\tResourceLifecycleConfig:\r\n\t\t\tApplicationResourceLifecycleConfig\r\n",
-        "description": "AWS::ElasticBeanstalk::Application\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk.html"
+    "AWS::ElasticLoadBalancingV2::LoadBalancer": {
+        "prefix": "elasticloadbalancingv2-loadbalancer",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticLoadBalancingV2::LoadBalancer\"\r\n\tProperties:\r\n\t\tIpAddressType: String\r\n\t\tLoadBalancerAttributes:\r\n\t\t\t- LoadBalancerAttribute\r\n\t\tName: String\r\n\t\tScheme: String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSubnetMappings:\r\n\t\t\t- SubnetMapping\r\n\t\tSubnets:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tType: String\r\n",
+        "description": "AWS::ElasticLoadBalancingV2::LoadBalancer\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html"
     },
     "AWS::DMS::ReplicationSubnetGroup": {
         "prefix": "dms-replicationsubnetgroup",
@@ -509,10 +559,10 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElastiCache::SubnetGroup\"\r\n\tProperties:\r\n\t\tCacheSubnetGroupName: String\r\n\t\tDescription: String #required\r\n\t\tSubnetIds: #required\r\n\t\t\t- String\r\n",
         "description": "AWS::ElastiCache::SubnetGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-subnetgroup.html"
     },
-    "AWS::CodeBuild::Project": {
-        "prefix": "codebuild-project",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeBuild::Project\"\r\n\tProperties:\r\n\t\tArtifacts: #required\r\n\t\t\tArtifacts\r\n\t\tBadgeEnabled: Boolean\r\n\t\tDescription: String\r\n\t\tServiceRole: String #required\r\n\t\tVpcConfig:\r\n\t\t\tVpcConfig\r\n\t\tEnvironment: #required\r\n\t\t\tEnvironment\r\n\t\tEncryptionKey: String\r\n\t\tSource: #required\r\n\t\t\tSource\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tName: String\r\n\t\tTimeoutInMinutes: Integer\r\n\t\tCache:\r\n\t\t\tProjectCache\r\n",
-        "description": "AWS::CodeBuild::Project\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
+    "AWS::Budgets::Budget": {
+        "prefix": "budgets-budget",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Budgets::Budget\"\r\n\tProperties:\r\n\t\tNotificationsWithSubscribers:\r\n\t\t\t- NotificationWithSubscribers\r\n\t\tBudget: #required\r\n\t\t\tBudgetData\r\n",
+        "description": "AWS::Budgets::Budget\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html"
     },
     "AWS::SNS::TopicPolicy": {
         "prefix": "sns-topicpolicy",
@@ -523,11 +573,6 @@
         "prefix": "lambda-alias",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Lambda::Alias\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tFunctionName: String #required\r\n\t\tFunctionVersion: String #required\r\n\t\tName: String #required\r\n\t\tRoutingConfig:\r\n\t\t\tAliasRoutingConfiguration\r\n",
         "description": "AWS::Lambda::Alias\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html"
-    },
-    "AWS::WAFRegional::ByteMatchSet": {
-        "prefix": "wafregional-bytematchset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::ByteMatchSet\"\r\n\tProperties:\r\n\t\tByteMatchTuples:\r\n\t\t\t- ByteMatchTuple\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::ByteMatchSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-bytematchset.html"
     },
     "AWS::ElasticLoadBalancingV2::Listener": {
         "prefix": "elasticloadbalancingv2-listener",
@@ -544,11 +589,6 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::NetworkInterface\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tGroupSet:\r\n\t\t\t- String\r\n\t\tInterfaceType: String\r\n\t\tIpv6AddressCount: Integer\r\n\t\tIpv6Addresses:\r\n\t\t\tInstanceIpv6Address\r\n\t\tPrivateIpAddress: String\r\n\t\tPrivateIpAddresses:\r\n\t\t\t- PrivateIpAddressSpecification\r\n\t\tSecondaryPrivateIpAddressCount: Integer\r\n\t\tSourceDestCheck: Boolean\r\n\t\tSubnetId: String #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::EC2::NetworkInterface\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface.html"
     },
-    "AWS::DAX::SubnetGroup": {
-        "prefix": "dax-subnetgroup",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DAX::SubnetGroup\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tSubnetGroupName: String\r\n\t\tSubnetIds: #required\r\n\t\t\t- String\r\n",
-        "description": "AWS::DAX::SubnetGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dax-subnetgroup.html"
-    },
     "AWS::OpsWorks::Stack": {
         "prefix": "opsworks-stack",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::OpsWorks::Stack\"\r\n\tProperties:\r\n\t\tAgentVersion: String\r\n\t\tAttributes:\r\n\t\t\tMap\r\n\t\tChefConfiguration:\r\n\t\t\tChefConfiguration\r\n\t\tCloneAppIds:\r\n\t\t\t- String\r\n\t\tClonePermissions: Boolean\r\n\t\tConfigurationManager:\r\n\t\t\tStackConfigurationManager\r\n\t\tCustomCookbooksSource:\r\n\t\t\tSource\r\n\t\tCustomJson: Json\r\n\t\tDefaultAvailabilityZone: String\r\n\t\tDefaultInstanceProfileArn: String #required\r\n\t\tDefaultOs: String\r\n\t\tDefaultRootDeviceType: String\r\n\t\tDefaultSshKeyName: String\r\n\t\tDefaultSubnetId: String\r\n\t\tEcsClusterArn: String\r\n\t\tElasticIps:\r\n\t\t\t- ElasticIp\r\n\t\tHostnameTheme: String\r\n\t\tName: String #required\r\n\t\tRdsDbInstances:\r\n\t\t\t- RdsDbInstance\r\n\t\tServiceRoleArn: String #required\r\n\t\tSourceStackId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tUseCustomCookbooks: Boolean\r\n\t\tUseOpsworksSecurityGroups: Boolean\r\n\t\tVpcId: String\r\n",
@@ -559,30 +599,25 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::DataPipeline::Pipeline\"\r\n\tProperties:\r\n\t\tActivate: Boolean\r\n\t\tDescription: String\r\n\t\tName: String #required\r\n\t\tParameterObjects: #required\r\n\t\t\t- ParameterObject\r\n\t\tParameterValues:\r\n\t\t\t- ParameterValue\r\n\t\tPipelineObjects:\r\n\t\t\t- PipelineObject\r\n\t\tPipelineTags:\r\n\t\t\t- PipelineTag\r\n",
         "description": "AWS::DataPipeline::Pipeline\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datapipeline-pipeline.html"
     },
-    "AWS::StepFunctions::StateMachine": {
-        "prefix": "stepfunctions-statemachine",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::StepFunctions::StateMachine\"\r\n\tProperties:\r\n\t\tDefinitionString: String #required\r\n\t\tStateMachineName: String\r\n\t\tRoleArn: String #required\r\n",
-        "description": "AWS::StepFunctions::StateMachine\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html"
+    "AWS::DMS::EventSubscription": {
+        "prefix": "dms-eventsubscription",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DMS::EventSubscription\"\r\n\tProperties:\r\n\t\tSourceType: String\r\n\t\tEventCategories:\r\n\t\t\t- String\r\n\t\tEnabled: Boolean\r\n\t\tSubscriptionName: String\r\n\t\tSnsTopicArn: String #required\r\n\t\tSourceIds:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
+        "description": "AWS::DMS::EventSubscription\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-eventsubscription.html"
     },
     "AWS::CodeDeploy::DeploymentConfig": {
         "prefix": "codedeploy-deploymentconfig",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeDeploy::DeploymentConfig\"\r\n\tProperties:\r\n\t\tDeploymentConfigName: String\r\n\t\tMinimumHealthyHosts:\r\n\t\t\tMinimumHealthyHosts\r\n",
         "description": "AWS::CodeDeploy::DeploymentConfig\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html"
     },
-    "AWS::DMS::EventSubscription": {
-        "prefix": "dms-eventsubscription",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DMS::EventSubscription\"\r\n\tProperties:\r\n\t\tSourceType: String\r\n\t\tEventCategories:\r\n\t\t\t- String\r\n\t\tEnabled: Boolean\r\n\t\tSubscriptionName: String\r\n\t\tSnsTopicArn: String #required\r\n\t\tSourceIds:\r\n\t\t\t- String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
-        "description": "AWS::DMS::EventSubscription\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-eventsubscription.html"
-    },
-    "AWS::DAX::ParameterGroup": {
-        "prefix": "dax-parametergroup",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DAX::ParameterGroup\"\r\n\tProperties:\r\n\t\tParameterNameValues: Json\r\n\t\tDescription: String\r\n\t\tParameterGroupName: String\r\n",
-        "description": "AWS::DAX::ParameterGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dax-parametergroup.html"
-    },
     "AWS::EC2::SubnetNetworkAclAssociation": {
         "prefix": "ec2-subnetnetworkaclassociation",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::SubnetNetworkAclAssociation\"\r\n\tProperties:\r\n\t\tNetworkAclId: String #required\r\n\t\tSubnetId: String #required\r\n",
         "description": "AWS::EC2::SubnetNetworkAclAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-network-acl-assoc.html"
+    },
+    "AWS::Config::ConfigurationAggregator": {
+        "prefix": "config-configurationaggregator",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Config::ConfigurationAggregator\"\r\n\tProperties:\r\n\t\tAccountAggregationSources:\r\n\t\t\t- AccountAggregationSource\r\n\t\tConfigurationAggregatorName: String #required\r\n\t\tOrganizationAggregationSource:\r\n\t\t\tOrganizationAggregationSource\r\n",
+        "description": "AWS::Config::ConfigurationAggregator\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationaggregator.html"
     },
     "AWS::ApiGateway::Account": {
         "prefix": "apigateway-account",
@@ -603,6 +638,16 @@
         "prefix": "cloudtrail-trail",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CloudTrail::Trail\"\r\n\tProperties:\r\n\t\tCloudWatchLogsLogGroupArn: String\r\n\t\tCloudWatchLogsRoleArn: String\r\n\t\tEnableLogFileValidation: Boolean\r\n\t\tEventSelectors:\r\n\t\t\t- EventSelector\r\n\t\tIncludeGlobalServiceEvents: Boolean\r\n\t\tIsLogging: Boolean #required\r\n\t\tIsMultiRegionTrail: Boolean\r\n\t\tKMSKeyId: String\r\n\t\tS3BucketName: String #required\r\n\t\tS3KeyPrefix: String\r\n\t\tSnsTopicName: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTrailName: String\r\n",
         "description": "AWS::CloudTrail::Trail\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html"
+    },
+    "AWS::ServiceCatalog::LaunchRoleConstraint": {
+        "prefix": "servicecatalog-launchroleconstraint",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::LaunchRoleConstraint\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n\t\tProductId: String #required\r\n\t\tRoleArn: String #required\r\n",
+        "description": "AWS::ServiceCatalog::LaunchRoleConstraint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-launchroleconstraint.html"
+    },
+    "AWS::ServiceCatalog::CloudFormationProvisionedProduct": {
+        "prefix": "servicecatalog-cloudformationprovisionedproduct",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::CloudFormationProvisionedProduct\"\r\n\tProperties:\r\n\t\tPathId: String\r\n\t\tProvisioningParameters:\r\n\t\t\t- ProvisioningParameter\r\n\t\tProductName: String\r\n\t\tProvisioningArtifactName: String\r\n\t\tNotificationArns:\r\n\t\t\t- String\r\n\t\tAcceptLanguage: String\r\n\t\tProductId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tProvisionedProductName: String\r\n\t\tProvisioningArtifactId: String\r\n",
+        "description": "AWS::ServiceCatalog::CloudFormationProvisionedProduct\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationprovisionedproduct.html"
     },
     "AWS::EMR::InstanceGroupConfig": {
         "prefix": "emr-instancegroupconfig",
@@ -654,25 +699,25 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::IoT::TopicRule\"\r\n\tProperties:\r\n\t\tRuleName: String\r\n\t\tTopicRulePayload: #required\r\n\t\t\tTopicRulePayload\r\n",
         "description": "AWS::IoT::TopicRule\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicrule.html"
     },
-    "AWS::OpsWorks::ElasticLoadBalancerAttachment": {
-        "prefix": "opsworks-elasticloadbalancerattachment",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::OpsWorks::ElasticLoadBalancerAttachment\"\r\n\tProperties:\r\n\t\tElasticLoadBalancerName: String #required\r\n\t\tLayerId: String #required\r\n",
-        "description": "AWS::OpsWorks::ElasticLoadBalancerAttachment\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworks-elbattachment.html"
-    },
     "AWS::ElastiCache::ReplicationGroup": {
         "prefix": "elasticache-replicationgroup",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElastiCache::ReplicationGroup\"\r\n\tProperties:\r\n\t\tAtRestEncryptionEnabled: Boolean\r\n\t\tAuthToken: String\r\n\t\tAutoMinorVersionUpgrade: Boolean\r\n\t\tAutomaticFailoverEnabled: Boolean\r\n\t\tCacheNodeType: String\r\n\t\tCacheParameterGroupName: String\r\n\t\tCacheSecurityGroupNames:\r\n\t\t\t- String\r\n\t\tCacheSubnetGroupName: String\r\n\t\tEngine: String\r\n\t\tEngineVersion: String\r\n\t\tNodeGroupConfiguration:\r\n\t\t\t- NodeGroupConfiguration\r\n\t\tNotificationTopicArn: String\r\n\t\tNumCacheClusters: Integer\r\n\t\tNumNodeGroups: Integer\r\n\t\tPort: Integer\r\n\t\tPreferredCacheClusterAZs:\r\n\t\t\t- String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tPrimaryClusterId: String\r\n\t\tReplicasPerNodeGroup: Integer\r\n\t\tReplicationGroupDescription: String #required\r\n\t\tReplicationGroupId: String\r\n\t\tSecurityGroupIds:\r\n\t\t\t- String\r\n\t\tSnapshotArns:\r\n\t\t\t- String\r\n\t\tSnapshotName: String\r\n\t\tSnapshotRetentionLimit: Integer\r\n\t\tSnapshotWindow: String\r\n\t\tSnapshottingClusterId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTransitEncryptionEnabled: Boolean\r\n",
         "description": "AWS::ElastiCache::ReplicationGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-replicationgroup.html"
+    },
+    "AWS::OpsWorks::ElasticLoadBalancerAttachment": {
+        "prefix": "opsworks-elasticloadbalancerattachment",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::OpsWorks::ElasticLoadBalancerAttachment\"\r\n\tProperties:\r\n\t\tElasticLoadBalancerName: String #required\r\n\t\tLayerId: String #required\r\n",
+        "description": "AWS::OpsWorks::ElasticLoadBalancerAttachment\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworks-elbattachment.html"
     },
     "AWS::Cognito::UserPoolUser": {
         "prefix": "cognito-userpooluser",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cognito::UserPoolUser\"\r\n\tProperties:\r\n\t\tValidationData:\r\n\t\t\t- AttributeType\r\n\t\tUserPoolId: String #required\r\n\t\tUsername: String\r\n\t\tMessageAction: String\r\n\t\tDesiredDeliveryMediums:\r\n\t\t\t- String\r\n\t\tForceAliasCreation: Boolean\r\n\t\tUserAttributes:\r\n\t\t\t- AttributeType\r\n",
         "description": "AWS::Cognito::UserPoolUser\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooluser.html"
     },
-    "AWS::WAFRegional::WebACLAssociation": {
-        "prefix": "wafregional-webaclassociation",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::WebACLAssociation\"\r\n\tProperties:\r\n\t\tResourceArn: String #required\r\n\t\tWebACLId: String #required\r\n",
-        "description": "AWS::WAFRegional::WebACLAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webaclassociation.html"
+    "AWS::ServiceCatalog::CloudFormationProduct": {
+        "prefix": "servicecatalog-cloudformationproduct",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::CloudFormationProduct\"\r\n\tProperties:\r\n\t\tOwner: String #required\r\n\t\tSupportDescription: String\r\n\t\tDescription: String\r\n\t\tDistributor: String\r\n\t\tSupportEmail: String\r\n\t\tAcceptLanguage: String\r\n\t\tSupportUrl: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tName: String #required\r\n\t\tProvisioningArtifactParameters: #required\r\n\t\t\t- ProvisioningArtifactProperties\r\n",
+        "description": "AWS::ServiceCatalog::CloudFormationProduct\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationproduct.html"
     },
     "AWS::CloudFormation::WaitCondition": {
         "prefix": "cloudformation-waitcondition",
@@ -684,25 +729,15 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::SecurityGroup\"\r\n\tProperties:\r\n\t\tGroupDescription: String #required\r\n\t\tGroupName: String\r\n\t\tSecurityGroupEgress:\r\n\t\t\t- Egress\r\n\t\tSecurityGroupIngress:\r\n\t\t\t- Ingress\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tVpcId: String\r\n",
         "description": "AWS::EC2::SecurityGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html"
     },
-    "AWS::Cloud9::EnvironmentEC2": {
-        "prefix": "cloud9-environmentec2",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cloud9::EnvironmentEC2\"\r\n\tProperties:\r\n\t\tRepositories:\r\n\t\t\t- Repository\r\n\t\tOwnerArn: String\r\n\t\tDescription: String\r\n\t\tAutomaticStopTimeMinutes: Integer\r\n\t\tSubnetId: String\r\n\t\tInstanceType: String #required\r\n\t\tName: String\r\n",
-        "description": "AWS::Cloud9::EnvironmentEC2\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloud9-environmentec2.html"
-    },
-    "AWS::WAFRegional::WebACL": {
-        "prefix": "wafregional-webacl",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::WebACL\"\r\n\tProperties:\r\n\t\tMetricName: String #required\r\n\t\tDefaultAction: #required\r\n\t\t\tAction\r\n\t\tRules:\r\n\t\t\t- Rule\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::WebACL\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html"
-    },
-    "AWS::WAFRegional::Rule": {
-        "prefix": "wafregional-rule",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::Rule\"\r\n\tProperties:\r\n\t\tMetricName: String #required\r\n\t\tPredicates:\r\n\t\t\t- Predicate\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::Rule\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-rule.html"
-    },
     "AWS::CloudFront::CloudFrontOriginAccessIdentity": {
         "prefix": "cloudfront-cloudfrontoriginaccessidentity",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CloudFront::CloudFrontOriginAccessIdentity\"\r\n\tProperties:\r\n\t\tCloudFrontOriginAccessIdentityConfig: #required\r\n\t\t\tCloudFrontOriginAccessIdentityConfig\r\n",
         "description": "AWS::CloudFront::CloudFrontOriginAccessIdentity\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cloudfrontoriginaccessidentity.html"
+    },
+    "AWS::AppSync::ApiKey": {
+        "prefix": "appsync-apikey",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AppSync::ApiKey\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tExpires: Double\r\n\t\tApiId: String #required\r\n",
+        "description": "AWS::AppSync::ApiKey\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-apikey.html"
     },
     "AWS::Route53::HostedZone": {
         "prefix": "route53-hostedzone",
@@ -711,7 +746,7 @@
     },
     "AWS::ApiGateway::RestApi": {
         "prefix": "apigateway-restapi",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApiGateway::RestApi\"\r\n\tProperties:\r\n\t\tBinaryMediaTypes:\r\n\t\t\t- String\r\n\t\tBody: Json\r\n\t\tBodyS3Location:\r\n\t\t\tS3Location\r\n\t\tCloneFrom: String\r\n\t\tDescription: String\r\n\t\tEndpointConfiguration:\r\n\t\t\tEndpointConfiguration\r\n\t\tFailOnWarnings: Boolean\r\n\t\tMode: String\r\n\t\tName: String\r\n\t\tParameters:\r\n\t\t\tMap\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApiGateway::RestApi\"\r\n\tProperties:\r\n\t\tApiKeySourceType: String\r\n\t\tBinaryMediaTypes:\r\n\t\t\t- String\r\n\t\tBody: Json\r\n\t\tBodyS3Location:\r\n\t\t\tS3Location\r\n\t\tCloneFrom: String\r\n\t\tDescription: String\r\n\t\tEndpointConfiguration:\r\n\t\t\tEndpointConfiguration\r\n\t\tFailOnWarnings: Boolean\r\n\t\tMinimumCompressionSize: Integer\r\n\t\tName: String\r\n\t\tParameters:\r\n\t\t\tMap\r\n\t\tPolicy: Json\r\n",
         "description": "AWS::ApiGateway::RestApi\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html"
     },
     "AWS::EC2::Subnet": {
@@ -724,19 +759,19 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeDeploy::Application\"\r\n\tProperties:\r\n\t\tApplicationName: String\r\n\t\tComputePlatform: String\r\n",
         "description": "AWS::CodeDeploy::Application\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-application.html"
     },
+    "AWS::ServiceCatalog::PortfolioProductAssociation": {
+        "prefix": "servicecatalog-portfolioproductassociation",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::PortfolioProductAssociation\"\r\n\tProperties:\r\n\t\tSourcePortfolioId: String\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n\t\tProductId: String #required\r\n",
+        "description": "AWS::ServiceCatalog::PortfolioProductAssociation\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioproductassociation.html"
+    },
     "AWS::EC2::VPC": {
         "prefix": "ec2-vpc",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPC\"\r\n\tProperties:\r\n\t\tCidrBlock: String #required\r\n\t\tEnableDnsHostnames: Boolean\r\n\t\tEnableDnsSupport: Boolean\r\n\t\tInstanceTenancy: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::EC2::VPC\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html"
     },
-    "AWS::ServiceDiscovery::Instance": {
-        "prefix": "servicediscovery-instance",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceDiscovery::Instance\"\r\n\tProperties:\r\n\t\tInstanceAttributes: Json #required\r\n\t\tInstanceId: String\r\n\t\tServiceId: String #required\r\n",
-        "description": "AWS::ServiceDiscovery::Instance\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-instance.html"
-    },
     "AWS::EC2::Instance": {
         "prefix": "ec2-instance",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::Instance\"\r\n\tProperties:\r\n\t\tAdditionalInfo: String\r\n\t\tAffinity: String\r\n\t\tAvailabilityZone: String\r\n\t\tBlockDeviceMappings:\r\n\t\t\t- BlockDeviceMapping\r\n\t\tCreditSpecification:\r\n\t\t\tCreditSpecification\r\n\t\tDisableApiTermination: Boolean\r\n\t\tEbsOptimized: Boolean\r\n\t\tElasticGpuSpecifications:\r\n\t\t\t- ElasticGpuSpecification\r\n\t\tHostId: String\r\n\t\tIamInstanceProfile: String\r\n\t\tImageId: String #required\r\n\t\tInstanceInitiatedShutdownBehavior: String\r\n\t\tInstanceType: String\r\n\t\tIpv6AddressCount: Integer\r\n\t\tIpv6Addresses:\r\n\t\t\t- InstanceIpv6Address\r\n\t\tKernelId: String\r\n\t\tKeyName: String\r\n\t\tMonitoring: Boolean\r\n\t\tNetworkInterfaces:\r\n\t\t\t- NetworkInterface\r\n\t\tPlacementGroupName: String\r\n\t\tPrivateIpAddress: String\r\n\t\tRamdiskId: String\r\n\t\tSecurityGroupIds:\r\n\t\t\t- String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSourceDestCheck: Boolean\r\n\t\tSsmAssociations:\r\n\t\t\t- SsmAssociation\r\n\t\tSubnetId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTenancy: String\r\n\t\tUserData: String\r\n\t\tVolumes:\r\n\t\t\t- Volume\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::Instance\"\r\n\tProperties:\r\n\t\tAdditionalInfo: String\r\n\t\tAffinity: String\r\n\t\tAvailabilityZone: String\r\n\t\tBlockDeviceMappings:\r\n\t\t\t- BlockDeviceMapping\r\n\t\tCreditSpecification:\r\n\t\t\tCreditSpecification\r\n\t\tDisableApiTermination: Boolean\r\n\t\tEbsOptimized: Boolean\r\n\t\tElasticGpuSpecifications:\r\n\t\t\t- ElasticGpuSpecification\r\n\t\tHostId: String\r\n\t\tIamInstanceProfile: String\r\n\t\tImageId: String\r\n\t\tInstanceInitiatedShutdownBehavior: String\r\n\t\tInstanceType: String\r\n\t\tIpv6AddressCount: Integer\r\n\t\tIpv6Addresses:\r\n\t\t\t- InstanceIpv6Address\r\n\t\tKernelId: String\r\n\t\tKeyName: String\r\n\t\tLaunchTemplate:\r\n\t\t\tLaunchTemplateSpecification\r\n\t\tMonitoring: Boolean\r\n\t\tNetworkInterfaces:\r\n\t\t\t- NetworkInterface\r\n\t\tPlacementGroupName: String\r\n\t\tPrivateIpAddress: String\r\n\t\tRamdiskId: String\r\n\t\tSecurityGroupIds:\r\n\t\t\t- String\r\n\t\tSecurityGroups:\r\n\t\t\t- String\r\n\t\tSourceDestCheck: Boolean\r\n\t\tSsmAssociations:\r\n\t\t\t- SsmAssociation\r\n\t\tSubnetId: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTenancy: String\r\n\t\tUserData: String\r\n\t\tVolumes:\r\n\t\t\t- Volume\r\n",
         "description": "AWS::EC2::Instance\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html"
     },
     "AWS::CloudFormation::Stack": {
@@ -749,6 +784,11 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElastiCache::ParameterGroup\"\r\n\tProperties:\r\n\t\tCacheParameterGroupFamily: String #required\r\n\t\tDescription: String #required\r\n\t\tProperties:\r\n\t\t\tMap\r\n",
         "description": "AWS::ElastiCache::ParameterGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-parameter-group.html"
     },
+    "AWS::Config::AggregationAuthorization": {
+        "prefix": "config-aggregationauthorization",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Config::AggregationAuthorization\"\r\n\tProperties:\r\n\t\tAuthorizedAccountId: String #required\r\n\t\tAuthorizedAwsRegion: String #required\r\n",
+        "description": "AWS::Config::AggregationAuthorization\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-aggregationauthorization.html"
+    },
     "AWS::WAF::ByteMatchSet": {
         "prefix": "waf-bytematchset",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAF::ByteMatchSet\"\r\n\tProperties:\r\n\t\tByteMatchTuples:\r\n\t\t\t- ByteMatchTuple\r\n\t\tName: String #required\r\n",
@@ -759,45 +799,45 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::SQS::QueuePolicy\"\r\n\tProperties:\r\n\t\tPolicyDocument: Json #required\r\n\t\tQueues: #required\r\n\t\t\t- String\r\n",
         "description": "AWS::SQS::QueuePolicy\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html"
     },
-    "AWS::WAF::SqlInjectionMatchSet": {
-        "prefix": "waf-sqlinjectionmatchset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAF::SqlInjectionMatchSet\"\r\n\tProperties:\r\n\t\tName: String #required\r\n\t\tSqlInjectionMatchTuples:\r\n\t\t\t- SqlInjectionMatchTuple\r\n",
-        "description": "AWS::WAF::SqlInjectionMatchSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html"
+    "AWS::EFS::FileSystem": {
+        "prefix": "efs-filesystem",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EFS::FileSystem\"\r\n\tProperties:\r\n\t\tEncrypted: Boolean\r\n\t\tFileSystemTags:\r\n\t\t\t- ElasticFileSystemTag\r\n\t\tKmsKeyId: String\r\n\t\tPerformanceMode: String\r\n",
+        "description": "AWS::EFS::FileSystem\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html"
     },
     "AWS::ApplicationAutoScaling::ScalingPolicy": {
         "prefix": "applicationautoscaling-scalingpolicy",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApplicationAutoScaling::ScalingPolicy\"\r\n\tProperties:\r\n\t\tPolicyName: String #required\r\n\t\tPolicyType: String #required\r\n\t\tResourceId: String\r\n\t\tScalableDimension: String\r\n\t\tScalingTargetId: String\r\n\t\tServiceNamespace: String\r\n\t\tStepScalingPolicyConfiguration:\r\n\t\t\tStepScalingPolicyConfiguration\r\n\t\tTargetTrackingScalingPolicyConfiguration:\r\n\t\t\tTargetTrackingScalingPolicyConfiguration\r\n",
         "description": "AWS::ApplicationAutoScaling::ScalingPolicy\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html"
     },
-    "AWS::EFS::FileSystem": {
-        "prefix": "efs-filesystem",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EFS::FileSystem\"\r\n\tProperties:\r\n\t\tEncrypted: Boolean\r\n\t\tFileSystemTags:\r\n\t\t\t- ElasticFileSystemTag\r\n\t\tKmsKeyId: String\r\n\t\tPerformanceMode: String\r\n",
-        "description": "AWS::EFS::FileSystem\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html"
-    },
-    "AWS::DAX::Cluster": {
-        "prefix": "dax-cluster",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DAX::Cluster\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tReplicationFactor: Integer #required\r\n\t\tParameterGroupName: String\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tNodeType: String #required\r\n\t\tIAMRoleARN: String #required\r\n\t\tSubnetGroupName: String\r\n\t\tClusterName: String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tNotificationTopicARN: String\r\n\t\tSecurityGroupIds:\r\n\t\t\t- String\r\n\t\tTags: Json\r\n",
-        "description": "AWS::DAX::Cluster\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dax-cluster.html"
-    },
-    "AWS::CodeCommit::Repository": {
-        "prefix": "codecommit-repository",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::CodeCommit::Repository\"\r\n\tProperties:\r\n\t\tRepositoryName: String #required\r\n\t\tTriggers:\r\n\t\t\t- RepositoryTrigger\r\n\t\tRepositoryDescription: String\r\n",
-        "description": "AWS::CodeCommit::Repository\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codecommit-repository.html"
+    "AWS::WAF::SqlInjectionMatchSet": {
+        "prefix": "waf-sqlinjectionmatchset",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAF::SqlInjectionMatchSet\"\r\n\tProperties:\r\n\t\tName: String #required\r\n\t\tSqlInjectionMatchTuples:\r\n\t\t\t- SqlInjectionMatchTuple\r\n",
+        "description": "AWS::WAF::SqlInjectionMatchSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html"
     },
     "AWS::SSM::PatchBaseline": {
         "prefix": "ssm-patchbaseline",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::PatchBaseline\"\r\n\tProperties:\r\n\t\tOperatingSystem: String\r\n\t\tApprovedPatches:\r\n\t\t\t- String\r\n\t\tPatchGroups:\r\n\t\t\t- String\r\n\t\tDescription: String\r\n\t\tApprovedPatchesComplianceLevel: String\r\n\t\tApprovalRules:\r\n\t\t\tRuleGroup\r\n\t\tGlobalFilters:\r\n\t\t\tPatchFilterGroup\r\n\t\tName: String #required\r\n\t\tRejectedPatches:\r\n\t\t\t- String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::PatchBaseline\"\r\n\tProperties:\r\n\t\tOperatingSystem: String\r\n\t\tApprovedPatches:\r\n\t\t\t- String\r\n\t\tPatchGroups:\r\n\t\t\t- String\r\n\t\tDescription: String\r\n\t\tApprovedPatchesComplianceLevel: String\r\n\t\tApprovedPatchesEnableNonSecurity: Boolean\r\n\t\tApprovalRules:\r\n\t\t\tRuleGroup\r\n\t\tGlobalFilters:\r\n\t\t\tPatchFilterGroup\r\n\t\tSources:\r\n\t\t\t- PatchSource\r\n\t\tName: String #required\r\n\t\tRejectedPatches:\r\n\t\t\t- String\r\n",
         "description": "AWS::SSM::PatchBaseline\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html"
+    },
+    "AWS::ServiceCatalog::Portfolio": {
+        "prefix": "servicecatalog-portfolio",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::Portfolio\"\r\n\tProperties:\r\n\t\tProviderName: String #required\r\n\t\tDescription: String\r\n\t\tDisplayName: String #required\r\n\t\tAcceptLanguage: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
+        "description": "AWS::ServiceCatalog::Portfolio\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolio.html"
     },
     "AWS::RDS::DBParameterGroup": {
         "prefix": "rds-dbparametergroup",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBParameterGroup\"\r\n\tProperties:\r\n\t\tDescription: String #required\r\n\t\tFamily: String #required\r\n\t\tParameters:\r\n\t\t\tMap\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::RDS::DBParameterGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html"
     },
-    "AWS::ServiceDiscovery::Service": {
-        "prefix": "servicediscovery-service",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceDiscovery::Service\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tDnsConfig: #required\r\n\t\t\tDnsConfig\r\n\t\tHealthCheckConfig:\r\n\t\t\tHealthCheckConfig\r\n\t\tName: String\r\n",
-        "description": "AWS::ServiceDiscovery::Service\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html"
+    "AWS::GuardDuty::Member": {
+        "prefix": "guardduty-member",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::GuardDuty::Member\"\r\n\tProperties:\r\n\t\tStatus: String\r\n\t\tMemberId: String #required\r\n\t\tEmail: String #required\r\n\t\tMessage: String\r\n\t\tDisableEmailNotification: Boolean\r\n\t\tDetectorId: String #required\r\n",
+        "description": "AWS::GuardDuty::Member\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-member.html"
+    },
+    "AWS::ServiceCatalog::AcceptedPortfolioShare": {
+        "prefix": "servicecatalog-acceptedportfolioshare",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::AcceptedPortfolioShare\"\r\n\tProperties:\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n",
+        "description": "AWS::ServiceCatalog::AcceptedPortfolioShare\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-acceptedportfolioshare.html"
     },
     "AWS::Logs::LogStream": {
         "prefix": "logs-logstream",
@@ -901,7 +941,7 @@
     },
     "AWS::Cognito::UserPool": {
         "prefix": "cognito-userpool",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cognito::UserPool\"\r\n\tProperties:\r\n\t\tUserPoolTags: Json\r\n\t\tPolicies:\r\n\t\t\tPolicies\r\n\t\tMfaConfiguration: String\r\n\t\tSchema:\r\n\t\t\t- SchemaAttribute\r\n\t\tAdminCreateUserConfig:\r\n\t\t\tAdminCreateUserConfig\r\n\t\tSmsAuthenticationMessage: String\r\n\t\tUserPoolName: String\r\n\t\tSmsVerificationMessage: String\r\n\t\tEmailConfiguration:\r\n\t\t\tEmailConfiguration\r\n\t\tSmsConfiguration:\r\n\t\t\tSmsConfiguration\r\n\t\tAliasAttributes:\r\n\t\t\t- String\r\n\t\tEmailVerificationSubject: String\r\n\t\tLambdaConfig:\r\n\t\t\tLambdaConfig\r\n\t\tAutoVerifiedAttributes:\r\n\t\t\t- String\r\n\t\tDeviceConfiguration:\r\n\t\t\tDeviceConfiguration\r\n\t\tEmailVerificationMessage: String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cognito::UserPool\"\r\n\tProperties:\r\n\t\tUserPoolTags: Json\r\n\t\tPolicies:\r\n\t\t\tPolicies\r\n\t\tMfaConfiguration: String\r\n\t\tSchema:\r\n\t\t\t- SchemaAttribute\r\n\t\tAdminCreateUserConfig:\r\n\t\t\tAdminCreateUserConfig\r\n\t\tSmsAuthenticationMessage: String\r\n\t\tUserPoolName: String\r\n\t\tSmsVerificationMessage: String\r\n\t\tEmailConfiguration:\r\n\t\t\tEmailConfiguration\r\n\t\tSmsConfiguration:\r\n\t\t\tSmsConfiguration\r\n\t\tAliasAttributes:\r\n\t\t\t- String\r\n\t\tEmailVerificationSubject: String\r\n\t\tLambdaConfig:\r\n\t\t\tLambdaConfig\r\n\t\tUsernameAttributes:\r\n\t\t\t- String\r\n\t\tAutoVerifiedAttributes:\r\n\t\t\t- String\r\n\t\tDeviceConfiguration:\r\n\t\t\tDeviceConfiguration\r\n\t\tEmailVerificationMessage: String\r\n",
         "description": "AWS::Cognito::UserPool\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html"
     },
     "AWS::EC2::EgressOnlyInternetGateway": {
@@ -916,13 +956,8 @@
     },
     "AWS::KinesisFirehose::DeliveryStream": {
         "prefix": "kinesisfirehose-deliverystream",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KinesisFirehose::DeliveryStream\"\r\n\tProperties:\r\n\t\tDeliveryStreamName: String\r\n\t\tDeliveryStreamType: String\r\n\t\tElasticsearchDestinationConfiguration:\r\n\t\t\tElasticsearchDestinationConfiguration\r\n\t\tExtendedS3DestinationConfiguration:\r\n\t\t\tExtendedS3DestinationConfiguration\r\n\t\tKinesisStreamSourceConfiguration:\r\n\t\t\tKinesisStreamSourceConfiguration\r\n\t\tRedshiftDestinationConfiguration:\r\n\t\t\tRedshiftDestinationConfiguration\r\n\t\tS3DestinationConfiguration:\r\n\t\t\tS3DestinationConfiguration\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KinesisFirehose::DeliveryStream\"\r\n\tProperties:\r\n\t\tDeliveryStreamName: String\r\n\t\tDeliveryStreamType: String\r\n\t\tElasticsearchDestinationConfiguration:\r\n\t\t\tElasticsearchDestinationConfiguration\r\n\t\tExtendedS3DestinationConfiguration:\r\n\t\t\tExtendedS3DestinationConfiguration\r\n\t\tKinesisStreamSourceConfiguration:\r\n\t\t\tKinesisStreamSourceConfiguration\r\n\t\tRedshiftDestinationConfiguration:\r\n\t\t\tRedshiftDestinationConfiguration\r\n\t\tS3DestinationConfiguration:\r\n\t\t\tS3DestinationConfiguration\r\n\t\tSplunkDestinationConfiguration:\r\n\t\t\tSplunkDestinationConfiguration\r\n",
         "description": "AWS::KinesisFirehose::DeliveryStream\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisfirehose-deliverystream.html"
-    },
-    "AWS::RDS::DBInstance": {
-        "prefix": "rds-dbinstance",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBInstance\"\r\n\tProperties:\r\n\t\tAllocatedStorage: String\r\n\t\tAllowMajorVersionUpgrade: Boolean\r\n\t\tAutoMinorVersionUpgrade: Boolean\r\n\t\tAvailabilityZone: String\r\n\t\tBackupRetentionPeriod: String\r\n\t\tCharacterSetName: String\r\n\t\tCopyTagsToSnapshot: Boolean\r\n\t\tDBClusterIdentifier: String\r\n\t\tDBInstanceClass: String #required\r\n\t\tDBInstanceIdentifier: String\r\n\t\tDBName: String\r\n\t\tDBParameterGroupName: String\r\n\t\tDBSecurityGroups:\r\n\t\t\t- String\r\n\t\tDBSnapshotIdentifier: String\r\n\t\tDBSubnetGroupName: String\r\n\t\tDomain: String\r\n\t\tDomainIAMRoleName: String\r\n\t\tEngine: String\r\n\t\tEngineVersion: String\r\n\t\tIops: Integer\r\n\t\tKmsKeyId: String\r\n\t\tLicenseModel: String\r\n\t\tMasterUserPassword: String\r\n\t\tMasterUsername: String\r\n\t\tMonitoringInterval: Integer\r\n\t\tMonitoringRoleArn: String\r\n\t\tMultiAZ: Boolean\r\n\t\tOptionGroupName: String\r\n\t\tPort: String\r\n\t\tPreferredBackupWindow: String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tPubliclyAccessible: Boolean\r\n\t\tSourceDBInstanceIdentifier: String\r\n\t\tSourceRegion: String\r\n\t\tStorageEncrypted: Boolean\r\n\t\tStorageType: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTimezone: String\r\n\t\tVPCSecurityGroups:\r\n\t\t\t- String\r\n",
-        "description": "AWS::RDS::DBInstance\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html"
     },
     "AWS::IAM::ManagedPolicy": {
         "prefix": "iam-managedpolicy",
@@ -934,10 +969,10 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::NetworkInterfaceAttachment\"\r\n\tProperties:\r\n\t\tDeleteOnTermination: Boolean\r\n\t\tDeviceIndex: String #required\r\n\t\tInstanceId: String #required\r\n\t\tNetworkInterfaceId: String #required\r\n",
         "description": "AWS::EC2::NetworkInterfaceAttachment\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface-attachment.html"
     },
-    "AWS::WAFRegional::IPSet": {
-        "prefix": "wafregional-ipset",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::WAFRegional::IPSet\"\r\n\tProperties:\r\n\t\tIPSetDescriptors:\r\n\t\t\t- IPSetDescriptor\r\n\t\tName: String #required\r\n",
-        "description": "AWS::WAFRegional::IPSet\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ipset.html"
+    "AWS::RDS::DBInstance": {
+        "prefix": "rds-dbinstance",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBInstance\"\r\n\tProperties:\r\n\t\tAllocatedStorage: String\r\n\t\tAllowMajorVersionUpgrade: Boolean\r\n\t\tAutoMinorVersionUpgrade: Boolean\r\n\t\tAvailabilityZone: String\r\n\t\tBackupRetentionPeriod: String\r\n\t\tCharacterSetName: String\r\n\t\tCopyTagsToSnapshot: Boolean\r\n\t\tDBClusterIdentifier: String\r\n\t\tDBInstanceClass: String #required\r\n\t\tDBInstanceIdentifier: String\r\n\t\tDBName: String\r\n\t\tDBParameterGroupName: String\r\n\t\tDBSecurityGroups:\r\n\t\t\t- String\r\n\t\tDBSnapshotIdentifier: String\r\n\t\tDBSubnetGroupName: String\r\n\t\tDomain: String\r\n\t\tDomainIAMRoleName: String\r\n\t\tEngine: String\r\n\t\tEngineVersion: String\r\n\t\tIops: Integer\r\n\t\tKmsKeyId: String\r\n\t\tLicenseModel: String\r\n\t\tMasterUserPassword: String\r\n\t\tMasterUsername: String\r\n\t\tMonitoringInterval: Integer\r\n\t\tMonitoringRoleArn: String\r\n\t\tMultiAZ: Boolean\r\n\t\tOptionGroupName: String\r\n\t\tPort: String\r\n\t\tPreferredBackupWindow: String\r\n\t\tPreferredMaintenanceWindow: String\r\n\t\tPubliclyAccessible: Boolean\r\n\t\tSourceDBInstanceIdentifier: String\r\n\t\tSourceRegion: String\r\n\t\tStorageEncrypted: Boolean\r\n\t\tStorageType: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTimezone: String\r\n\t\tVPCSecurityGroups:\r\n\t\t\t- String\r\n",
+        "description": "AWS::RDS::DBInstance\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html"
     },
     "AWS::IoT::PolicyPrincipalAttachment": {
         "prefix": "iot-policyprincipalattachment",
@@ -968,6 +1003,11 @@
         "prefix": "cognito-userpoolclient",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Cognito::UserPoolClient\"\r\n\tProperties:\r\n\t\tGenerateSecret: Boolean\r\n\t\tClientName: String\r\n\t\tUserPoolId: String #required\r\n\t\tExplicitAuthFlows:\r\n\t\t\t- String\r\n\t\tRefreshTokenValidity: Double\r\n\t\tReadAttributes:\r\n\t\t\t- String\r\n\t\tWriteAttributes:\r\n\t\t\t- String\r\n",
         "description": "AWS::Cognito::UserPoolClient\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html"
+    },
+    "AWS::ApiGateway::VpcLink": {
+        "prefix": "apigateway-vpclink",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ApiGateway::VpcLink\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tTargetArns: #required\r\n\t\t\t- String\r\n\t\tName: String #required\r\n",
+        "description": "AWS::ApiGateway::VpcLink\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-vpclink.html"
     },
     "AWS::ECR::Repository": {
         "prefix": "ecr-repository",
@@ -1004,6 +1044,11 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::DMS::Endpoint\"\r\n\tProperties:\r\n\t\tKmsKeyId: String\r\n\t\tPort: Integer\r\n\t\tDatabaseName: String\r\n\t\tS3Settings:\r\n\t\t\tS3Settings\r\n\t\tEngineName: String #required\r\n\t\tDynamoDbSettings:\r\n\t\t\tDynamoDbSettings\r\n\t\tUsername: String\r\n\t\tSslMode: String\r\n\t\tServerName: String\r\n\t\tExtraConnectionAttributes: String\r\n\t\tEndpointType: String #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tEndpointIdentifier: String\r\n\t\tPassword: String\r\n\t\tCertificateArn: String\r\n\t\tMongoDbSettings:\r\n\t\t\tMongoDbSettings\r\n",
         "description": "AWS::DMS::Endpoint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html"
     },
+    "AWS::ServiceCatalog::LaunchNotificationConstraint": {
+        "prefix": "servicecatalog-launchnotificationconstraint",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceCatalog::LaunchNotificationConstraint\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tNotificationArns: #required\r\n\t\t\t- String\r\n\t\tAcceptLanguage: String\r\n\t\tPortfolioId: String #required\r\n\t\tProductId: String #required\r\n",
+        "description": "AWS::ServiceCatalog::LaunchNotificationConstraint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-launchnotificationconstraint.html"
+    },
     "AWS::DirectoryService::SimpleAD": {
         "prefix": "directoryservice-simplead",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::DirectoryService::SimpleAD\"\r\n\tProperties:\r\n\t\tCreateAlias: Boolean\r\n\t\tDescription: String\r\n\t\tEnableSso: Boolean\r\n\t\tName: String #required\r\n\t\tPassword: String #required\r\n\t\tShortName: String\r\n\t\tSize: String #required\r\n\t\tVpcSettings: #required\r\n\t\t\tVpcSettings\r\n",
@@ -1024,15 +1069,15 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBSecurityGroup\"\r\n\tProperties:\r\n\t\tDBSecurityGroupIngress: #required\r\n\t\t\t- Ingress\r\n\t\tEC2VpcId: String\r\n\t\tGroupDescription: String #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::RDS::DBSecurityGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html"
     },
-    "AWS::KMS::Alias": {
-        "prefix": "kms-alias",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KMS::Alias\"\r\n\tProperties:\r\n\t\tAliasName: String #required\r\n\t\tTargetKeyId: String #required\r\n",
-        "description": "AWS::KMS::Alias\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-alias.html"
-    },
     "AWS::ECS::TaskDefinition": {
         "prefix": "ecs-taskdefinition",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ECS::TaskDefinition\"\r\n\tProperties:\r\n\t\tContainerDefinitions:\r\n\t\t\t- ContainerDefinition\r\n\t\tCpu: String\r\n\t\tExecutionRoleArn: String\r\n\t\tFamily: String\r\n\t\tMemory: String\r\n\t\tNetworkMode: String\r\n\t\tPlacementConstraints:\r\n\t\t\t- TaskDefinitionPlacementConstraint\r\n\t\tRequiresCompatibilities:\r\n\t\t\t- String\r\n\t\tTaskRoleArn: String\r\n\t\tVolumes:\r\n\t\t\t- Volume\r\n",
         "description": "AWS::ECS::TaskDefinition\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html"
+    },
+    "AWS::KMS::Alias": {
+        "prefix": "kms-alias",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KMS::Alias\"\r\n\tProperties:\r\n\t\tAliasName: String #required\r\n\t\tTargetKeyId: String #required\r\n",
+        "description": "AWS::KMS::Alias\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-alias.html"
     },
     "AWS::Redshift::ClusterSubnetGroup": {
         "prefix": "redshift-clustersubnetgroup",
@@ -1064,25 +1109,20 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::GuardDuty::Detector\"\r\n\tProperties:\r\n\t\tEnable: Boolean #required\r\n",
         "description": "AWS::GuardDuty::Detector\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-detector.html"
     },
-    "AWS::ServiceDiscovery::PrivateDnsNamespace": {
-        "prefix": "servicediscovery-privatednsnamespace",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceDiscovery::PrivateDnsNamespace\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tVpc: String #required\r\n\t\tName: String #required\r\n",
-        "description": "AWS::ServiceDiscovery::PrivateDnsNamespace\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-privatednsnamespace.html"
-    },
     "AWS::ElasticBeanstalk::ApplicationVersion": {
         "prefix": "elasticbeanstalk-applicationversion",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::ElasticBeanstalk::ApplicationVersion\"\r\n\tProperties:\r\n\t\tApplicationName: String #required\r\n\t\tDescription: String\r\n\t\tSourceBundle: #required\r\n\t\t\tSourceBundle\r\n",
         "description": "AWS::ElasticBeanstalk::ApplicationVersion\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-version.html"
     },
-    "AWS::EC2::VPCEndpoint": {
-        "prefix": "ec2-vpcendpoint",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPCEndpoint\"\r\n\tProperties:\r\n\t\tPolicyDocument: Json\r\n\t\tRouteTableIds:\r\n\t\t\t- String\r\n\t\tServiceName: String #required\r\n\t\tVpcId: String #required\r\n",
-        "description": "AWS::EC2::VPCEndpoint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html"
-    },
     "AWS::Glue::DevEndpoint": {
         "prefix": "glue-devendpoint",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Glue::DevEndpoint\"\r\n\tProperties:\r\n\t\tExtraJarsS3Path: String\r\n\t\tEndpointName: String\r\n\t\tPublicKey: String #required\r\n\t\tNumberOfNodes: Integer\r\n\t\tSubnetId: String\r\n\t\tExtraPythonLibsS3Path: String\r\n\t\tSecurityGroupIds:\r\n\t\t\t- String\r\n\t\tRoleArn: String #required\r\n",
         "description": "AWS::Glue::DevEndpoint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-devendpoint.html"
+    },
+    "AWS::EC2::VPCEndpoint": {
+        "prefix": "ec2-vpcendpoint",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPCEndpoint\"\r\n\tProperties:\r\n\t\tPolicyDocument: Json\r\n\t\tRouteTableIds:\r\n\t\t\t- String\r\n\t\tServiceName: String #required\r\n\t\tVpcId: String #required\r\n",
+        "description": "AWS::EC2::VPCEndpoint\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html"
     },
     "AWS::OpsWorks::UserProfile": {
         "prefix": "opsworks-userprofile",
@@ -1129,30 +1169,30 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Logs::SubscriptionFilter\"\r\n\tProperties:\r\n\t\tDestinationArn: String #required\r\n\t\tFilterPattern: String #required\r\n\t\tLogGroupName: String #required\r\n\t\tRoleArn: String\r\n",
         "description": "AWS::Logs::SubscriptionFilter\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-subscriptionfilter.html"
     },
-    "AWS::KinesisAnalytics::ApplicationReferenceDataSource": {
-        "prefix": "kinesisanalytics-applicationreferencedatasource",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KinesisAnalytics::ApplicationReferenceDataSource\"\r\n\tProperties:\r\n\t\tApplicationName: String #required\r\n\t\tReferenceDataSource: #required\r\n\t\t\tReferenceDataSource\r\n",
-        "description": "AWS::KinesisAnalytics::ApplicationReferenceDataSource\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalytics-applicationreferencedatasource.html"
+    "AWS::SSM::ResourceDataSync": {
+        "prefix": "ssm-resourcedatasync",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::ResourceDataSync\"\r\n\tProperties:\r\n\t\tKMSKeyArn: String\r\n\t\tBucketName: String #required\r\n\t\tBucketRegion: String #required\r\n\t\tSyncFormat: String #required\r\n\t\tSyncName: String #required\r\n\t\tBucketPrefix: String\r\n",
+        "description": "AWS::SSM::ResourceDataSync\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-resourcedatasync.html"
     },
-    "AWS::KinesisAnalytics::Application": {
-        "prefix": "kinesisanalytics-application",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::KinesisAnalytics::Application\"\r\n\tProperties:\r\n\t\tApplicationName: String\r\n\t\tInputs: #required\r\n\t\t\t- Input\r\n\t\tApplicationDescription: String\r\n\t\tApplicationCode: String\r\n",
-        "description": "AWS::KinesisAnalytics::Application\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalytics-application.html"
+    "AWS::AmazonMQ::Configuration": {
+        "prefix": "amazonmq-configuration",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AmazonMQ::Configuration\"\r\n\tProperties:\r\n\t\tEngineVersion: String #required\r\n\t\tDescription: String\r\n\t\tEngineType: String #required\r\n\t\tData: String #required\r\n\t\tName: String #required\r\n",
+        "description": "AWS::AmazonMQ::Configuration\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html"
     },
     "AWS::DynamoDB::Table": {
         "prefix": "dynamodb-table",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DynamoDB::Table\"\r\n\tProperties:\r\n\t\tAttributeDefinitions:\r\n\t\t\t- AttributeDefinition\r\n\t\tGlobalSecondaryIndexes:\r\n\t\t\t- GlobalSecondaryIndex\r\n\t\tKeySchema: #required\r\n\t\t\t- KeySchema\r\n\t\tLocalSecondaryIndexes:\r\n\t\t\t- LocalSecondaryIndex\r\n\t\tProvisionedThroughput: #required\r\n\t\t\tProvisionedThroughput\r\n\t\tSSESpecification:\r\n\t\t\tSSESpecification\r\n\t\tStreamSpecification:\r\n\t\t\tStreamSpecification\r\n\t\tTableName: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTimeToLiveSpecification:\r\n\t\t\tTimeToLiveSpecification\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::DynamoDB::Table\"\r\n\tProperties:\r\n\t\tAttributeDefinitions:\r\n\t\t\t- AttributeDefinition\r\n\t\tGlobalSecondaryIndexes:\r\n\t\t\t- GlobalSecondaryIndex\r\n\t\tKeySchema: #required\r\n\t\t\t- KeySchema\r\n\t\tLocalSecondaryIndexes:\r\n\t\t\t- LocalSecondaryIndex\r\n\t\tPointInTimeRecoverySpecification:\r\n\t\t\tPointInTimeRecoverySpecification\r\n\t\tProvisionedThroughput: #required\r\n\t\t\tProvisionedThroughput\r\n\t\tSSESpecification:\r\n\t\t\tSSESpecification\r\n\t\tStreamSpecification:\r\n\t\t\tStreamSpecification\r\n\t\tTableName: String\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tTimeToLiveSpecification:\r\n\t\t\tTimeToLiveSpecification\r\n",
         "description": "AWS::DynamoDB::Table\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html"
-    },
-    "AWS::Logs::Destination": {
-        "prefix": "logs-destination",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Logs::Destination\"\r\n\tProperties:\r\n\t\tDestinationName: String #required\r\n\t\tDestinationPolicy: String #required\r\n\t\tRoleArn: String #required\r\n\t\tTargetArn: String #required\r\n",
-        "description": "AWS::Logs::Destination\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-destination.html"
     },
     "AWS::Redshift::ClusterSecurityGroup": {
         "prefix": "redshift-clustersecuritygroup",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Redshift::ClusterSecurityGroup\"\r\n\tProperties:\r\n\t\tDescription: String #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::Redshift::ClusterSecurityGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clustersecuritygroup.html"
+    },
+    "AWS::Logs::Destination": {
+        "prefix": "logs-destination",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::Logs::Destination\"\r\n\tProperties:\r\n\t\tDestinationName: String #required\r\n\t\tDestinationPolicy: String #required\r\n\t\tRoleArn: String #required\r\n\t\tTargetArn: String #required\r\n",
+        "description": "AWS::Logs::Destination\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-destination.html"
     },
     "AWS::WAF::XssMatchSet": {
         "prefix": "waf-xssmatchset",
@@ -1181,7 +1221,7 @@
     },
     "AWS::SSM::Association": {
         "prefix": "ssm-association",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::Association\"\r\n\tProperties:\r\n\t\tAssociationName: String\r\n\t\tDocumentVersion: String\r\n\t\tInstanceId: String\r\n\t\tName: String #required\r\n\t\tParameters:\r\n\t\t\tMap\r\n\t\tScheduleExpression: String\r\n\t\tTargets:\r\n\t\t\t- Target\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::SSM::Association\"\r\n\tProperties:\r\n\t\tAssociationName: String\r\n\t\tDocumentVersion: String\r\n\t\tInstanceId: String\r\n\t\tName: String #required\r\n\t\tOutputLocation:\r\n\t\t\tInstanceAssociationOutputLocation\r\n\t\tParameters:\r\n\t\t\tMap\r\n\t\tScheduleExpression: String\r\n\t\tTargets:\r\n\t\t\t- Target\r\n",
         "description": "AWS::SSM::Association\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html"
     },
     "AWS::RDS::DBClusterParameterGroup": {
@@ -1189,10 +1229,20 @@
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::RDS::DBClusterParameterGroup\"\r\n\tProperties:\r\n\t\tDescription: String #required\r\n\t\tFamily: String #required\r\n\t\tParameters: Json #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n",
         "description": "AWS::RDS::DBClusterParameterGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbclusterparametergroup.html"
     },
+    "AWS::EC2::VPCEndpointService": {
+        "prefix": "ec2-vpcendpointservice",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::EC2::VPCEndpointService\"\r\n\tProperties:\r\n\t\tNetworkLoadBalancerArns: #required\r\n\t\t\t- String\r\n\t\tAcceptanceRequired: Boolean\r\n",
+        "description": "AWS::EC2::VPCEndpointService\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpointservice.html"
+    },
     "AWS::Athena::NamedQuery": {
         "prefix": "athena-namedquery",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::Athena::NamedQuery\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tQueryString: String #required\r\n\t\tDatabase: String #required\r\n\t\tName: String\r\n",
         "description": "AWS::Athena::NamedQuery\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html"
+    },
+    "AWS::GuardDuty::Master": {
+        "prefix": "guardduty-master",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::GuardDuty::Master\"\r\n\tProperties:\r\n\t\tDetectorId: String #required\r\n\t\tMasterId: String #required\r\n\t\tInvitationId: String\r\n",
+        "description": "AWS::GuardDuty::Master\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-master.html"
     },
     "AWS::Inspector::AssessmentTarget": {
         "prefix": "inspector-assessmenttarget",
@@ -1206,7 +1256,7 @@
     },
     "AWS::AutoScaling::AutoScalingGroup": {
         "prefix": "autoscaling-autoscalinggroup",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AutoScaling::AutoScalingGroup\"\r\n\tProperties:\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tCooldown: String\r\n\t\tDesiredCapacity: String\r\n\t\tHealthCheckGracePeriod: Integer\r\n\t\tHealthCheckType: String\r\n\t\tInstanceId: String\r\n\t\tLaunchConfigurationName: String\r\n\t\tLifecycleHookSpecificationList:\r\n\t\t\t- LifecycleHookSpecification\r\n\t\tLoadBalancerNames:\r\n\t\t\t- String\r\n\t\tMaxSize: String #required\r\n\t\tMetricsCollection:\r\n\t\t\t- MetricsCollection\r\n\t\tMinSize: String #required\r\n\t\tNotificationConfigurations:\r\n\t\t\t- NotificationConfiguration\r\n\t\tPlacementGroup: String\r\n\t\tTags:\r\n\t\t\t- TagProperty\r\n\t\tTargetGroupARNs:\r\n\t\t\t- String\r\n\t\tTerminationPolicies:\r\n\t\t\t- String\r\n\t\tVPCZoneIdentifier:\r\n\t\t\t- String\r\n",
+        "body": "${1:LogicalID}:\r\n\tType: \"AWS::AutoScaling::AutoScalingGroup\"\r\n\tProperties:\r\n\t\tAutoScalingGroupName: String\r\n\t\tAvailabilityZones:\r\n\t\t\t- String\r\n\t\tCooldown: String\r\n\t\tDesiredCapacity: String\r\n\t\tHealthCheckGracePeriod: Integer\r\n\t\tHealthCheckType: String\r\n\t\tInstanceId: String\r\n\t\tLaunchConfigurationName: String\r\n\t\tLifecycleHookSpecificationList:\r\n\t\t\t- LifecycleHookSpecification\r\n\t\tLoadBalancerNames:\r\n\t\t\t- String\r\n\t\tMaxSize: String #required\r\n\t\tMetricsCollection:\r\n\t\t\t- MetricsCollection\r\n\t\tMinSize: String #required\r\n\t\tNotificationConfigurations:\r\n\t\t\t- NotificationConfiguration\r\n\t\tPlacementGroup: String\r\n\t\tServiceLinkedRoleARN: String\r\n\t\tTags:\r\n\t\t\t- TagProperty\r\n\t\tTargetGroupARNs:\r\n\t\t\t- String\r\n\t\tTerminationPolicies:\r\n\t\t\t- String\r\n\t\tVPCZoneIdentifier:\r\n\t\t\t- String\r\n",
         "description": "AWS::AutoScaling::AutoScalingGroup\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"
     },
     "AWS::CloudFormation::CustomResource": {
@@ -1238,11 +1288,6 @@
         "prefix": "dms-replicationtask",
         "body": "${1:LogicalID}:\r\n\tType: \"AWS::DMS::ReplicationTask\"\r\n\tProperties:\r\n\t\tReplicationTaskSettings: String\r\n\t\tTableMappings: String #required\r\n\t\tReplicationTaskIdentifier: String\r\n\t\tSourceEndpointArn: String #required\r\n\t\tMigrationType: String #required\r\n\t\tTargetEndpointArn: String #required\r\n\t\tReplicationInstanceArn: String #required\r\n\t\tTags:\r\n\t\t\t- Tag\r\n\t\tCdcStartTime: Double\r\n",
         "description": "AWS::DMS::ReplicationTask\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationtask.html"
-    },
-    "AWS::ServiceDiscovery::PublicDnsNamespace": {
-        "prefix": "servicediscovery-publicdnsnamespace",
-        "body": "${1:LogicalID}:\r\n\tType: \"AWS::ServiceDiscovery::PublicDnsNamespace\"\r\n\tProperties:\r\n\t\tDescription: String\r\n\t\tName: String #required\r\n",
-        "description": "AWS::ServiceDiscovery::PublicDnsNamespace\r\nhttp://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-publicdnsnamespace.html"
     },
     "AWS::ApiGateway::UsagePlanKey": {
         "prefix": "apigateway-usageplankey",

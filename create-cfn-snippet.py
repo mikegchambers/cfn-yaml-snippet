@@ -1,7 +1,7 @@
 #!/bin/python
 
 import argparse
-#import urllib2
+import urllib.request
 import json
 from pprint import pprint
 
@@ -15,21 +15,21 @@ parser.add_argument('--input', type=str, default="CloudFormationResourceSpecific
 parser.add_argument('--output', type=str, default="yaml.json",
                    help='Output file')
 
-#parser.add_argument('--remote', type=bool, default=False,
-#                   help='Attempt to get the source file direct from AWS.')
+parser.add_argument('--remote', type=bool, default=False,
+                  help='Attempt to get the source file direct from AWS.')
 
-#parser.add_argument('--url', type=str, default="https://d2stg8d246z9di.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json",
-#                   help='Input web link')
+parser.add_argument('--url', type=str, default="https://d2stg8d246z9di.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json",
+                  help='Input web link')
 
 args = parser.parse_args()
 
 # Load the source data:
 
-#if args.remote == True:
-#    response = urllib2.urlopen(args.url)
-#    data = response.read()
-#else:
-#    data = json.load(open(args.input))
+if args.remote == True:
+   response = urllib.request.urlopen(args.url)
+   data = response.read()
+else:
+   data = json.load(open(args.input))
 
 data = json.load(open(args.input))
 
